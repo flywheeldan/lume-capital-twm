@@ -1,0 +1,37 @@
+# === Lume Capital — TWM structural variant — deploy allowlist ===
+# Same pattern as the main repo: only the built pages and the assets they reference are
+# tracked. Everything else stays local.
+
+# 1) Ignore everything by default
+/*
+
+# 2) Repo essentials
+!.gitignore
+!README.md
+!lume.css
+
+# 3) Pages
+!index.html
+!about.html
+!services.html
+!team.html
+!contact.html
+
+# 4) Root-level assets referenced by the pages
+!nwm-logo-horizontal-white.svg
+!hero-northern-lights.jpg
+!belief-section-northern-lights.jpg
+!CFP-logo.jpeg
+!MDRT-logo.jpeg
+!chris-moore-pic.jpg
+!james-taylor-pic.jpg
+!vanessa-pic.jpg
+!zach-pic.jpg
+!connor-pic.jpg
+!sydney-pic.jpg
+!kevin-pic.jpg
+
+# 5) Keep only the one PNG referenced (inside PNG/)
+!PNG/
+PNG/*
+!PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png

@@ -1,0 +1,751 @@
+  :root {
+    /* === INK / NIGHT — the dark ground where the "lume" glows (reading a watch dial in the dark) === */
+    --ink:        #0A1622;   /* near-black navy — hero + dark sections */
+    --ink-2:      #0E2438;   /* raised panels on ink */
+    --ink-line:   rgba(255,255,255,0.12);
+
+    /* === NAVY — NM-derived anchor, headlines on light === */
+    --navy:       #0E497B;
+    --navy-deep:  #0A3860;
+    --navy-tint:  #E9F0F7;
+
+    /* === GOLD — the luminescent accent, sampled from the Lume mark === */
+    --gold:       #F5A623;   /* warm dial-gold — accents, dials, button fills (not text on light) */
+    --gold-soft:  #FBC66B;   /* gold text on the dark "ink" ground */
+    --gold-deep:  #8A5E12;   /* WCAG-AA gold for small text on light (5.3:1 on --paper) */
+    --glow:       rgba(245,166,35,0.55);
+
+    /* === PAPER — warm bone instead of clinical white (more UHNW than pure #FFF) === */
+    --paper:      #FAF7F0;
+    --paper-2:    #F2EDE1;
+    --surface:    #FFFFFF;
+
+    /* === Neutrals / text === */
+    --ink-text:   #16232E;   /* body on light */
+    --slate:      #45525C;
+    --slate-muted:#5C6870;   /* darkened for WCAG-AA (5.3:1 on --paper) */
+    --line:       #E4DED0;   /* warm hairline */
+    --line-cool:  #DCE3E8;
+
+    /* === Type ===
+       PRIMARY (display/headlines/brand): Akzidenz-Grotesk — licensed in production,
+       falls back to Helvetica/Arial locally. SECONDARY (body): Source Sans 3. */
+    --sans-display: 'Akzidenz-Grotesk', 'Akzidenz-Grotesk Pro', 'Akzidenz-Grotesk Next',
+                    'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sans:  'Source Sans 3', system-ui, sans-serif;
+    --font-num: 'Fraunces', Georgia, 'Times New Roman', serif; /* numeral accent only */
+
+    /* === Type scale (mobile-first; desktop sizes stepped up in the @media below) === */
+    --text-hero:   clamp(2.5rem, 6vw, 4.75rem); /* hero display only: 40 → 76, fluid */
+    --text-h1:     2rem;      /* 32 mobile / 40 desktop */
+    --text-h2:     1.5rem;    /* 24 / 30 — also large display numerals */
+    --text-h3:     1.25rem;   /* 20 / 24 — card & step titles, the questions */
+    --text-h4:     1.125rem;  /* 18 / 20 — names, small subheads */
+    --text-accent: 1.125rem;  /* 18 — leads, block quotes, accents */
+    --text-body:   1rem;      /* 16 — body copy, inputs */
+    --text-small:  0.875rem;  /* 14 — labels, captions, meta (smallest) */
+
+    /* === Line-heights === */
+    --leading-tight:   1.1;   /* h1 / h2 / display numerals */
+    --leading-snug:    1.3;   /* h3 / h4 / block quotes */
+    --leading-normal:  1.5;   /* leads / accents */
+    --leading-relaxed: 1.6;   /* body / long-form */
+
+    --tracking-wider: 0.22em;
+    --tracking-wide:  0.08em;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6.5rem;
+
+    --maxw: 1200px;
+  }
+
+  /* Desktop type step-up — headings only; body / accent / small hold constant across devices */
+  @media (min-width: 768px) {
+    :root {
+      --text-h1: 2.5rem;   /* 40 */
+      --text-h2: 1.875rem; /* 30 */
+      --text-h3: 1.5rem;   /* 24 */
+      --text-h4: 1.25rem;  /* 20 */
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-size: var(--text-body);
+    color: var(--ink-text);
+    background: var(--paper);
+    line-height: var(--leading-relaxed);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-md); }
+  .narrow { max-width: 760px; }
+
+  /* === Type scale === */
+  h1, h2, h3, h4 { font-family: var(--sans-display); color: var(--navy); font-weight: 700; line-height: var(--leading-tight); }
+
+  h1 { font-size: var(--text-h1); letter-spacing: -0.025em; }
+  h2 { font-size: var(--text-h2); letter-spacing: -0.02em; }
+  h3 { font-size: var(--text-h3); line-height: var(--leading-snug); letter-spacing: -0.015em; font-weight: 600; }
+  h4 { font-size: var(--text-h4); line-height: var(--leading-snug); letter-spacing: -0.01em; font-weight: 600; }
+
+  p { font-size: var(--text-body); color: var(--slate); }
+
+  .lead {
+    font-size: var(--text-accent);
+    line-height: var(--leading-normal);
+    color: var(--slate);
+    font-weight: 400;
+  }
+
+  /* TWM: the .eyebrow rules are removed with their markup. No TWM section offers a
+     small label above the heading — a section has an intro Title and paragraph, nothing
+     that sits above the Title. Where an eyebrow carried real information it has been
+     folded into the heading rather than dropped. */
+
+  .kicker-serif { font-family: var(--sans-display); font-weight: 600; color: var(--gold-deep); }
+
+  /* === Buttons === */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: var(--text-small);
+    letter-spacing: 0.02em;
+    padding: 0.95rem 1.75rem;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+  }
+  .btn svg { width: 15px; height: 15px; transition: transform .18s ease; }
+  .btn:hover svg { transform: translateX(3px); }
+
+  .btn-gold { background: var(--gold); color: var(--ink); box-shadow: 0 0 0 rgba(245,166,35,0); }
+  .btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 12px 30px -8px var(--glow); }
+
+  .btn-navy { background: var(--navy); color: #fff; }
+  .btn-navy:hover { background: var(--navy-deep); transform: translateY(-2px); }
+
+  .btn-outline { background: transparent; border-color: rgba(255,255,255,0.35); color: #fff; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-soft); }
+
+  .btn-outline-navy { background: transparent; border-color: var(--navy); color: var(--navy); }
+  .btn-outline-navy:hover { background: var(--navy); color: #fff; }
+
+  .textlink {
+    font-weight: 600;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+  }
+  .textlink svg { width: 14px; height: 14px; transition: transform .18s ease; }
+  .textlink:hover svg { transform: translateX(3px); }
+
+  /* === Watch-dial motif ===
+     Rebuilt to follow the Lume logo exactly: 12 bold hour ticks (cardinals slightly
+     longer) with a filled triangle at the 12 marker. Defined once as <symbol id="lumeDial">
+     at the top of <body> and referenced via <use>. Stroke weight is proportional to size,
+     so it reads like the logo at any scale. Colored/opacity-tuned per instance via `color`. */
+  .dial { display: block; }
+
+  /* === Sections === */
+  section { padding: var(--space-2xl) 0; }
+  .section-head { max-width: 720px; margin-bottom: var(--space-xl); }
+  .section-head.center { margin-inline: auto; text-align: center; }
+  .section-head .lead { margin-top: var(--space-md); }
+
+  .ink-section { background: var(--ink); color: #EAF0F5; position: relative; overflow: hidden; }
+  .ink-section h1, .ink-section h2, .ink-section h3 { color: #fff; }
+  .ink-section p, .ink-section .lead { color: rgba(233,240,245,0.78); }
+
+  /* ============================================================= NAV */
+  header.site-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,22,34,0.85);
+    backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--ink-line);
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-sm);
+    padding: 1.1rem var(--space-md);
+    max-width: var(--maxw); margin: 0 auto;
+  }
+  /* LUME IS THE HERO. NM is a small, subordinate line beneath — not a co-equal lockup. */
+  /* Co-brand lockup: Northwestern Mutual first, vertical divider, then Lume Capital —
+     matched heights so neither mark dominates. Same order/scale on mobile and desktop. */
+  .brand { display: flex; flex-direction: row; align-items: center; gap: 0.9rem; flex: none; }
+  .brand .brand-nwm  { height: 22px; width: auto; max-width: none; }
+  .brand .brand-lume { height: 28.6px; width: auto; max-width: none; } /* NWM baseline +30% */
+  .brand .brand-divider { flex: none; width: 1px; height: 24px; background: rgba(255,255,255,0.42); }
+  nav ul.nav-links { display: flex; gap: 1.25rem; list-style: none; flex: none; }
+  nav ul.nav-links a {
+    font-size: var(--text-small); font-weight: 600; color: rgba(255,255,255,0.9);
+    letter-spacing: 0.02em; position: relative; padding: 0.25rem 0; white-space: nowrap;
+  }
+  nav ul.nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1.5px;
+    background: var(--gold); transition: width .2s ease;
+  }
+  nav ul.nav-links a:hover { color: #fff; }
+  nav ul.nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: flex; align-items: center; gap: var(--space-sm); flex: none; }
+  /* Hairline between the nav links and the utility cluster: without it the phone number
+     sits close enough to "Team" to read as a sixth nav item rather than a way to call. */
+  .nav-divider { flex: none; width: 1px; height: 20px; background: rgba(255,255,255,0.28); }
+  .nav-phone { font-size: var(--text-small); font-weight: 600; color: #fff; white-space: nowrap; }
+  .nav-cta .btn { padding: 0.6rem 1.2rem; font-size: var(--text-small); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; }
+  .hamburger svg { width: 26px; height: 26px; }
+
+  .mobile-drawer { display: none; flex-direction: column; gap: var(--space-md); padding: var(--space-md); background: var(--ink); border-top: 1px solid var(--ink-line); }
+  .mobile-drawer.open { display: flex; }
+  .mobile-drawer ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .mobile-drawer a { font-size: var(--text-body); font-weight: 600; color: #fff; }
+  .mobile-contact { display: flex; flex-direction: column; gap: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--ink-line); }
+  .mobile-contact .btn { text-align: center; justify-content: center; }
+
+  /* Six nav items + the two-logo lockup + phone + CTA need roughly 1200px of bar to sit
+     comfortably, so the drawer takes over below 1080px rather than the old 940px — at
+     940px the row overflowed and "Team" collided with the phone number. */
+  @media (max-width: 1080px) {
+    nav ul.nav-links, .nav-cta { display: none; }
+    .hamburger { display: block; }
+  }
+  /* Between 1081px and the full 1200px container there is room, but not slack — pull the
+     gaps and the phone in rather than letting anything touch. */
+  @media (min-width: 1081px) and (max-width: 1259px) {
+    nav ul.nav-links { gap: 1rem; }
+    .nav-cta { gap: var(--space-sm); }
+    .nav-phone { display: none; }
+    nav { padding-inline: var(--space-sm); }
+  }
+  /* Keep the two-logo lockup on one line next to the menu button on phones */
+  @media (max-width: 560px) {
+    .brand { gap: 0.6rem; }
+    .brand .brand-nwm  { height: 18px; }
+    .brand .brand-lume { height: 23.4px; } /* NWM baseline +30% */
+    .brand .brand-divider { height: 24px; }
+  }
+
+  /* ============================================================= HERO (cinematic night)
+     Layer stack, back to front — every layer gets an explicit z-index so the optional
+     photo can slot underneath the scrim without reordering the markup:
+       0  .hero-photo   optional background image (absent = flat --ink fill)
+       1  .hero::before scrim / brand grade — carries legibility AND the gold glow
+       2  .hero-dial    the signature watch dial, overlaid on whatever is behind it
+       3  .hero-inner   the copy */
+  .hero { position: relative; background: var(--ink); color: #fff; overflow: hidden; isolation: isolate; }
+  /* Soft golden "lume" glow rising from lower-left, like light off a dial */
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(120% 90% at 82% 18%, rgba(14,73,123,0.55) 0%, rgba(10,22,34,0) 55%),
+      radial-gradient(60% 55% at 12% 108%, rgba(245,166,35,0.16) 0%, rgba(10,22,34,0) 60%);
+    pointer-events: none;
+  }
+
+  /* --- Optional photographic hero -------------------------------------------------
+     Add class `has-photo` to <section class="hero"> and drop in an <img class="hero-photo">.
+     Remove both and the hero falls straight back to the flat-ink treatment. */
+  .hero-photo {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: 66% 48%; /* hold the aurora column right of the copy */
+    /* This plate is already a deep violet-navy close to --ink, so it needs only a light
+       touch — the heavy grade the section once carried would crush it to mud. */
+    filter: saturate(0.88) contrast(1.03) brightness(0.94);
+    pointer-events: none; user-select: none;
+  }
+  /* With a photo behind it the scrim has to do real work: a left-to-right ramp keeps the
+     copy column near-solid ink while the aurora stays visible on the right, and a vertical
+     wash kills the bright snow along the bottom edge. Brand glows ride on top of both. */
+  .hero.has-photo::before {
+    background:
+      linear-gradient(97deg,  rgba(10,22,34,0.94) 0%, rgba(10,22,34,0.90) 42%, rgba(10,22,34,0.58) 68%, rgba(10,22,34,0.22) 100%),
+      linear-gradient(180deg, rgba(10,22,34,0.40) 0%, rgba(10,22,34,0.12) 45%, rgba(10,22,34,0.66) 100%),
+      radial-gradient(120% 90% at 82% 18%, rgba(14,73,123,0.32) 0%, rgba(10,22,34,0) 58%),
+      radial-gradient(60% 55% at 12% 108%, rgba(245,166,35,0.18) 0%, rgba(10,22,34,0) 60%);
+  }
+  /* Large faint watch dial bleeding off the right edge — the signature Lume motif */
+  .hero-dial {
+    position: absolute; top: 50%; right: -12%; transform: translateY(-50%);
+    width: min(720px, 68vw); height: min(720px, 68vw);
+    color: rgba(245,166,35,0.30);
+    pointer-events: none; z-index: 2;
+  }
+  /* Over a photo the dial crosses both bright and dark passages, so it needs a warmer,
+     slightly stronger tint plus a dark halo to hold its edge against the aurora. */
+  .hero.has-photo .hero-dial {
+    color: rgba(255,226,178,0.40);
+    filter: drop-shadow(0 0 16px rgba(10,22,34,0.65));
+  }
+  .hero-inner {
+    position: relative; z-index: 3;
+    max-width: var(--maxw); margin: 0 auto;
+    padding: clamp(4.5rem, 11vw, 9rem) var(--space-md) clamp(4rem, 9vw, 8rem);
+  }
+  .hero-copy { max-width: 760px; }
+  /* TWM Hero Banners carry a Title and a Subtitle in one colour — no two-tone headline,
+     so the .glow span is gone and the whole line is white. */
+  .hero h1 { font-size: var(--text-hero); color: #fff; }
+  .hero .lead { color: rgba(233,240,245,0.82); margin: var(--space-lg) 0 var(--space-xl); max-width: 620px; }
+  /* One CTA per Hero Banner. The row is kept (rather than collapsed to a bare link) so a
+     second CTA can return without restyling, if TWM turns out to allow it. */
+  .hero-cta-row { display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; }
+
+  /* ============================================================= PAGE HEADER
+     Services / Team / Contact open on a solid-colour band rather than a photograph —
+     the Banner Text 1 pattern (background colour required, background image optional).
+     No licensed plates exist for those pages and none are needed; this also leaves each
+     page's single Hero Banner allowance unspent. */
+  .page-header { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
+  .page-header::before {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(120% 90% at 84% 12%, rgba(14,73,123,0.50) 0%, rgba(10,22,34,0) 58%),
+      radial-gradient(58% 55% at 10% 108%, rgba(245,166,35,0.14) 0%, rgba(10,22,34,0) 62%);
+  }
+  .page-header .ph-dial {
+    position: absolute; top: 50%; right: -6%; transform: translateY(-50%);
+    width: min(420px, 46vw); height: min(420px, 46vw);
+    color: rgba(245,166,35,0.16); pointer-events: none; z-index: 2;
+  }
+  .page-header-inner {
+    position: relative; z-index: 3;
+    max-width: var(--maxw); margin: 0 auto;
+    padding: clamp(3.25rem, 7vw, 5.5rem) var(--space-md) clamp(3rem, 6vw, 4.75rem);
+  }
+  .page-header h1 { font-size: var(--text-h1); color: #fff; max-width: 18ch; }
+  .page-header .lead { color: rgba(233,240,245,0.82); margin-top: var(--space-md); max-width: 620px; }
+
+  /* ============================================================= PROOF / AUDIENCE STRIP
+     Now carries the trust signals too. In the original these lived inside the hero, but a
+     Hero Banner has no element for them; folding them in here keeps them directly below
+     the hero without adding a second consecutive strip. */
+  .proof { background: var(--ink-2); color: #fff; padding: var(--space-lg) 0; border-top: 1px solid var(--ink-line); }
+  /* Label on its own centered line, then the audiences on one aligned row below */
+  .proof-inner { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; text-align: center; }
+  .trust-line {
+    margin-top: 0.4rem; padding-top: var(--space-md);
+    border-top: 1px solid var(--ink-line); width: 100%;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem 1.5rem;
+    font-size: var(--text-small); letter-spacing: 0.01em; color: rgba(233,240,245,0.82);
+  }
+  .trust-line b { color: var(--gold-soft); font-weight: 600; }
+  .trust-line .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .7; }
+  .proof-label { font-size: var(--text-small); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: rgba(255,255,255,0.72); font-weight: 700; }
+  .proof-items { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.7rem 2.2rem; }
+  .proof-item { font-family: var(--sans-display); font-size: var(--text-accent); color: #fff; font-weight: 500; display: inline-flex; align-items: center; gap: 0.9rem; }
+  .proof-item::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+  /* ============================================================= STORY (Chris) */
+  .story-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, var(--space-2xl)); align-items: start; }
+  .story-media { position: relative; }
+  .story-media img { width: 100%; height: 620px; object-fit: cover; object-position: center 20%; border-radius: 3px; filter: grayscale(100%) contrast(1.03); }
+  .story-media .story-frame {
+    position: absolute; inset: 14px; border: 1px solid var(--gold); opacity: 0.5;
+    border-radius: 3px; pointer-events: none;
+  }
+  .story-media .dial-badge {
+    position: absolute; right: -26px; bottom: 40px; width: 92px; height: 92px;
+    background: var(--ink); color: var(--gold); border-radius: 50%;
+    display: grid; place-items: center; box-shadow: 0 18px 40px -12px rgba(10,22,34,0.5);
+  }
+  .story-media .dial-badge .dial { width: 60px; height: 60px; color: var(--gold); }
+  .story blockquote {
+    font-family: var(--sans-display); font-size: var(--text-accent); line-height: var(--leading-snug);
+    font-style: italic; color: var(--navy); font-weight: 500; margin: var(--space-lg) 0;
+    padding-left: var(--space-md); border-left: 3px solid var(--gold);
+  }
+  .story .sig { margin-top: var(--space-lg); }
+  .story .sig .name { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); }
+  .story .sig .role { font-size: var(--text-small); color: var(--slate-muted); }
+  .story .credmarks { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: var(--space-md); }
+  .credmarks span {
+    font-size: var(--text-small); font-weight: 700; letter-spacing: 0.04em; color: var(--navy);
+    border: 1px solid var(--line-cool); padding: 0.3rem 0.65rem; border-radius: 2px;
+  }
+
+  /* ============================================================= WHO WE SERVE */
+  .serve-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+  .serve-card { background: var(--paper); padding: clamp(1.75rem, 3vw, var(--space-lg)); transition: background .2s ease; }
+  .serve-card:hover { background: var(--surface); }
+  .serve-num { font-family: var(--sans-display); font-size: var(--text-small); color: var(--gold-deep); letter-spacing: 0.1em; }
+  .serve-card h3 { margin: var(--space-sm) 0 0.65rem; }
+  .serve-card p { font-size: var(--text-body); }
+  .serve-card ul { list-style: none; margin-top: var(--space-md); display: flex; flex-direction: column; gap: 0.5rem; }
+  .serve-card li { position: relative; padding-left: 1.35rem; font-size: var(--text-body); color: var(--slate); }
+  .serve-card li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  /* ============================================================= THE LUME BLUEPRINT (process) */
+  .blueprint { position: relative; overflow: hidden; }
+  .blueprint::before {
+    content: ""; position: absolute; top: -20%; left: -8%; width: 480px; height: 480px;
+    color: rgba(245,166,35,0.10); pointer-events: none;
+  }
+  /* TWM: 3-up, not 5-up. No TWM section renders five columns; Sequential Content tops
+     out at a 3-column tile format, so the five steps wrap 3 + 2. */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl) var(--space-md); margin-top: var(--space-xl); }
+  .step { text-align: center; position: relative; }
+  .step-ring { width: 108px; height: 108px; margin: 0 auto var(--space-md); position: relative; display: grid; place-items: center; }
+  .step-ring .dial { width: 108px; height: 108px; color: rgba(251,198,107,0.55); position: absolute; inset: 0; }
+  .step-ring .step-num { font-family: var(--sans-display); font-size: var(--text-h2); color: var(--gold-soft); font-weight: 500; }
+  .step h3 { color: #fff; font-size: var(--text-h4); margin-bottom: 0.4rem; }
+  .step p { font-size: var(--text-small); color: rgba(233,240,245,0.68); }
+  /* Connecting hairline between steps. At 3-up the run breaks after every third tile,
+     so the rule targets "not the last in a row" rather than "not the last overall" —
+     otherwise step 03 would trail a line into empty space at the row's end. */
+  .step:not(:nth-child(3n)):not(:last-child)::after {
+    content: ""; position: absolute; top: 54px; right: -50%; width: 100%; height: 1px;
+    background: linear-gradient(90deg, rgba(245,166,35,0.4), rgba(245,166,35,0.05)); z-index: 0;
+  }
+  .blueprint-cta { text-align: center; margin-top: var(--space-2xl); }
+
+  /* The ongoing partnership that follows implementation, framed as continued growth
+     rather than a review schedule */
+  .fw-cadence {
+    max-width: 780px; margin: var(--space-xl) auto 0; text-align: center;
+    font-size: var(--text-accent); line-height: var(--leading-normal); color: rgba(233,240,245,0.82);
+  }
+  .fw-cadence b { color: var(--gold-soft); font-weight: 600; }
+
+  /* ============================================================= SCOPE BAND (WM = IC + AP + RM)
+     Second layer of the Framework: the five steps are the JOURNEY, this is the SCOPE.
+     Chris's wealth-management formula translated out of its initials — Investment
+     Consulting + Advanced Planning (Enhancement / Transfer / Protection / Giving)
+     + Relationship Management (his team, plus the Professional Network). */
+  .wm-band { margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--ink-line); }
+  .wm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .wm-card {
+    background: var(--ink-2); border: 1px solid var(--ink-line); border-top: 2px solid var(--gold);
+    border-radius: 3px; padding: var(--space-lg);
+  }
+  .wm-card h3 { color: #fff; font-size: var(--text-h4); margin-bottom: 0.5rem; }
+  .wm-card > p { color: rgba(233,240,245,0.75); font-size: var(--text-body); }
+  .wm-sub { list-style: none; margin-top: var(--space-md); display: flex; flex-direction: column; gap: 0.65rem; }
+  .wm-sub li { position: relative; padding-left: 1.35rem; font-size: var(--text-small); color: rgba(233,240,245,0.82); line-height: var(--leading-normal); }
+  .wm-sub li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .wm-sub b { color: #fff; font-weight: 600; }
+
+  /* ============================================================= CAPABILITIES (sophistication) */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .cap-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-top: 3px solid var(--navy); border-radius: 3px;
+    padding: var(--space-lg); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .cap-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -22px rgba(14,73,123,0.35); border-top-color: var(--gold); }
+  .cap-card .cap-ico { width: 40px; height: 40px; color: var(--navy); margin-bottom: var(--space-md); }
+  .cap-card .cap-ico svg { width: 100%; height: 100%; }
+  .cap-card h3 { font-size: var(--text-h3); margin-bottom: 0.5rem; }
+  .cap-card p { font-size: var(--text-body); }
+
+  /* ============================================================= SUCCESS CHANGES THE QUESTIONS
+     Five "statement cards". The QUESTION is all you see at rest — recognition before
+     explanation. Clicking a card reveals the theme (Purpose / Stewardship / Family /
+     Time / Legacy) and how we approach that conversation.
+
+     Built on native <details>/<summary> rather than JS-driven flip cards, deliberately:
+     keyboard- and screen-reader-accessible for free, works with JS disabled, and it
+     tolerates the reveals being different lengths (a flip card forces every card to
+     the height of the longest back face).
+
+     TWM: restructured from the original 6-column span grid to a single-column stack,
+     which is what Multi-Item Content 1 (1-Column Accordion) actually renders. Five
+     cards sits inside its nine-accordion maximum. The span arithmetic and the
+     per-breakpoint span resets it required are gone with it. */
+  .q-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-sm); align-items: start; max-width: 900px; margin-inline: auto; }
+  .q-card {
+    position: relative; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+    box-shadow: 0 16px 36px -26px rgba(14,73,123,0.40);
+    transition: box-shadow .18s ease, border-color .18s ease;
+  }
+  .q-card:hover { box-shadow: 0 26px 48px -24px rgba(14,73,123,0.45); border-color: var(--gold); }
+  .q-card[open] { border-color: var(--gold); box-shadow: 0 26px 48px -24px rgba(14,73,123,0.45); }
+
+  .q-card > summary {
+    list-style: none; cursor: pointer;
+    padding: var(--space-lg);
+    display: flex; flex-direction: column; gap: var(--space-md);
+  }
+  .q-card > summary::-webkit-details-marker { display: none; }
+  .q-card > summary::marker { content: ""; }
+  .q-card > summary:focus-visible { outline: 2px solid var(--navy); outline-offset: -4px; }
+
+  /* Number badge: the Lume dial forms the border, with a serif numeral accent inside. */
+  .q-num { position: relative; flex: none; width: 66px; height: 66px; display: grid; place-items: center; }
+  .q-num .dial { position: absolute; inset: 0; width: 66px; height: 66px; color: var(--gold); }
+  .q-numtext {
+    position: relative; z-index: 1;
+    font-family: var(--font-num); font-size: var(--text-h3); font-weight: 600; line-height: 1;
+    color: var(--navy); font-variant-numeric: lining-nums;
+  }
+  .q-text {
+    position: relative; z-index: 1;
+    font-family: var(--sans-display); font-size: var(--text-h3); font-style: italic;
+    line-height: var(--leading-snug); color: var(--navy); font-weight: 500; letter-spacing: -0.01em;
+    /* Reserve a set number of question lines so CLOSED cards in a row share a baseline
+       instead of ending raggedly. Deliberately in em rather than px: the questions
+       re-wrap when licensed Akzidenz-Grotesk replaces the local Helvetica/Arial
+       fallback, and a pixel height would then be wrong. It is only a floor — a longer
+       question still grows its own card. The wide row-2 cards need one line fewer. */
+    min-height: calc(4 * var(--leading-snug) * 1em);
+  }
+  .q-card:nth-of-type(4) .q-text,
+  .q-card:nth-of-type(5) .q-text { min-height: calc(3 * var(--leading-snug) * 1em); }
+
+  /* Open/close affordance — a + that becomes a − */
+  .q-toggle { position: absolute; top: var(--space-lg); right: var(--space-lg); width: 20px; height: 20px; }
+  .q-toggle::before, .q-toggle::after {
+    content: ""; position: absolute; background: var(--gold-deep);
+    transition: transform .22s ease, opacity .22s ease;
+  }
+  .q-toggle::before { left: 0; top: 50%; width: 100%; height: 2px; margin-top: -1px; }
+  .q-toggle::after  { top: 0; left: 50%; height: 100%; width: 2px; margin-left: -1px; }
+  .q-card[open] .q-toggle::after { transform: rotate(90deg); opacity: 0; }
+
+  .q-reveal { padding: 0 var(--space-lg) var(--space-lg); }
+  .q-reveal::before { content: ""; display: block; height: 1px; background: var(--line); margin-bottom: var(--space-md); }
+  .q-label {
+    display: block; font-size: var(--text-small); font-weight: 700;
+    letter-spacing: var(--tracking-wider); text-transform: uppercase;
+    color: var(--gold-deep); margin-bottom: 0.6rem;
+  }
+  .q-reveal p { font-size: var(--text-body); }
+  .q-reveal p + p { margin-top: 0.7rem; }
+  .q-card[open] .q-reveal { animation: qIn .3s ease both; }
+  @keyframes qIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+  .q-close { max-width: 760px; margin: var(--space-xl) auto 0; text-align: center; font-size: var(--text-accent); line-height: var(--leading-normal); color: var(--slate); }
+  .q-close b { color: var(--gold-deep); font-weight: 600; }
+  /* Compliance: these are composite questions, not client testimonials. */
+  .q-note { max-width: 760px; margin: var(--space-md) auto 0; text-align: center; font-size: var(--text-small); color: var(--slate-muted); line-height: var(--leading-normal); }
+
+  /* ============================================================= THE FOUR PILLARS
+     Firm-voice answer to the client-voice questions above. Deliberately NOT card
+     chrome — a gold rule over each column keeps it editorial and distinct from
+     both the question cards and the Who We Serve grid. */
+  /* TWM: 3-up. Multi-Item text sections are 3-column, so the four pillars wrap 3 + 1. */
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg) var(--space-md); }
+  .pillar { border-top: 2px solid var(--gold); padding-top: var(--space-md); }
+  .p-num { position: relative; width: 52px; height: 52px; display: grid; place-items: center; margin-bottom: var(--space-sm); }
+  .p-num .dial { position: absolute; inset: 0; width: 52px; height: 52px; color: var(--gold); }
+  .p-numtext {
+    position: relative; z-index: 1; font-family: var(--font-num); font-size: var(--text-body);
+    font-weight: 600; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums;
+  }
+  .pillar h3 { margin-bottom: 0.4rem; }
+  .p-imperative {
+    font-family: var(--sans-display); font-size: var(--text-accent); font-style: italic;
+    font-weight: 500; color: var(--gold-deep); line-height: var(--leading-snug);
+    margin-bottom: var(--space-sm);
+    /* Legacy's imperative runs to two lines while the other three fit one, which would
+       drop its body copy out of alignment across the row. Reserve two lines in em so it
+       still holds once the licensed display face changes the wrap point. */
+    min-height: calc(2 * var(--leading-snug) * 1em);
+  }
+  .pillar p { font-size: var(--text-body); }
+
+  /* ============================================================= WHAT WE BELIEVE (full-bleed)
+     Full-width photograph with copy overlaid. Per the NM ADA checklist, text over
+     photography must clear 4.5:1 across EVERY part of the image it touches — so the
+     copy zone is not left to the photo. A hard ink gradient (>=0.92 alpha behind the
+     text) guarantees roughly 13:1 against white even where the underlying grayscale
+     image goes pure white, which means any replacement Getty asset drops in without
+     re-tuning the scrim. */
+  .believe { position: relative; overflow: hidden; background: var(--ink); color: #EAF0F5; padding: clamp(5rem, 12vw, 9.5rem) 0; }
+  .believe-media { position: absolute; inset: 0; z-index: 0; }
+  .believe-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: grayscale(100%) contrast(1.04); }
+  .believe-scrim {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(10,22,34,0.96) 0%, rgba(10,22,34,0.93) 38%, rgba(10,22,34,0.58) 46%, rgba(10,22,34,0.26) 50%),
+      linear-gradient(180deg, rgba(10,22,34,0.50) 0%, rgba(10,22,34,0.05) 42%, rgba(10,22,34,0.60) 50%);
+  }
+  /* --- Aurora variant ---------------------------------------------------------------
+     Add class `has-aurora` to <section class="believe"> alongside a colour aurora plate.
+     Remove the class (and restore lume-lifestyle.jpg) to return to the grayscale
+     treatment. Grayscale is dropped — a monochrome aurora is just a gray sky — and the
+     same brand grade as the hero pulls the candy-teal toward Lume navy. */
+  .believe.has-aurora .believe-media img {
+    filter: saturate(0.68) contrast(1.05) brightness(0.76);
+    object-position: center 40%;
+  }
+  /* The copy runs to 640px — roughly half the container — so the ramp has to hold its
+     dark plateau further right than the grayscale plate needed before falling away. */
+  .believe.has-aurora .believe-scrim {
+    background:
+      linear-gradient(90deg,  rgba(10,22,34,0.96) 0%, rgba(10,22,34,0.94) 50%, rgba(10,22,34,0.60) 74%, rgba(10,22,34,0.30) 100%),
+      linear-gradient(180deg, rgba(10,22,34,0.42) 0%, rgba(10,22,34,0.10) 45%, rgba(10,22,34,0.70) 100%),
+      radial-gradient(58% 52% at 14% 106%, rgba(245,166,35,0.16) 0%, rgba(10,22,34,0) 62%);
+  }
+  .believe .container { position: relative; z-index: 2; }
+  .believe-copy { max-width: 640px; }
+  /* h1 on the About page, where this section is the Hero Banner — sized between the home
+     hero and a section heading so it reads as a page title, not a full display line. */
+  .believe h1 { color: #fff; font-size: clamp(2.1rem, 4.4vw, 3.4rem); }
+  .believe h2 { color: #fff; }
+  .believe .lead { color: rgba(233,240,245,0.88); margin-top: var(--space-md); }
+  /* Needs the .believe prefix to outrank `.believe .lead` above — the thesis carries both
+     classes, and a single-class selector would lose the colour battle and render white. */
+  .believe .believe-thesis {
+    color: var(--gold-soft); margin-top: var(--space-lg); padding-top: var(--space-lg);
+    border-top: 1px solid var(--ink-line);
+  }
+
+  /* ============================================================= TEAM */
+  /* TWM: 3-up. Team 4 would permit a 4-column layout, but the whole build is reflowed
+     to 3 for consistency; seven members wrap 3 + 3 + 1. */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+  .team-card { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; transition: box-shadow .18s ease, transform .18s ease; }
+  .team-card:hover { transform: translateY(-3px); box-shadow: 0 18px 36px -22px rgba(14,73,123,0.3); }
+  /* Consistent editorial black-and-white team wall (per brand direction) */
+  .team-card img { width: 100%; height: 260px; object-fit: cover; object-position: center top; filter: grayscale(100%) contrast(1.03); transition: filter .3s ease; }
+  .team-card:hover img { filter: grayscale(100%) contrast(1.03) brightness(1.05); }
+  .team-info { padding: var(--space-md); }
+  .team-info h4 { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); font-weight: 500; }
+  .team-role { font-size: var(--text-small); color: var(--gold-deep); font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; margin: 0.2rem 0 0.6rem; }
+  .team-note { font-size: var(--text-small); color: var(--slate); font-style: italic; }
+
+  /* ============================================================= RECOGNITION / COMMUNITY */
+  .rec-strip { display: flex; gap: var(--space-md); flex-wrap: wrap; justify-content: center; margin-top: var(--space-lg); }
+  .rec-pill {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 2px;
+    padding: 0.85rem 1.4rem; font-size: var(--text-small); font-weight: 600; color: var(--navy);
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .rec-pill svg { width: 16px; height: 16px; color: var(--gold); }
+  .badge-row { display: flex; align-items: center; justify-content: center; gap: var(--space-xl); flex-wrap: wrap; padding: var(--space-xl) 0 var(--space-sm); }
+  .badge-row img { height: 58px; width: auto; object-fit: contain; }
+  .disclosure { font-size: var(--text-small); color: var(--slate-muted); max-width: 820px; margin: var(--space-md) auto 0; text-align: center; line-height: var(--leading-normal); }
+
+  .community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-2xl); }
+  .community-card { background: var(--paper-2); border-radius: 3px; padding: var(--space-lg); border-left: 3px solid var(--gold); }
+  .community-card .c-stat { font-family: var(--sans-display); font-size: var(--text-h2); color: var(--navy); font-weight: 600; }
+  .community-card h4 { font-family: var(--sans-display); color: var(--navy); font-size: var(--text-h4); font-weight: 500; margin: 0.3rem 0 0.5rem; }
+  .community-card p { font-size: var(--text-body); }
+
+  /* ============================================================= CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem,5vw,var(--space-2xl)); align-items: start; }
+  .contact-copy .lead { color: rgba(233,240,245,0.82); }
+  .contact-assure { margin-top: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-md); }
+  .assure-item { display: flex; gap: 0.85rem; align-items: flex-start; }
+  .assure-item svg { width: 20px; height: 20px; color: var(--gold); flex: none; margin-top: 3px; }
+  .assure-item span { font-size: var(--text-body); color: rgba(233,240,245,0.82); }
+  .assure-item b { color: #fff; font-weight: 600; }
+
+  .form-panel { background: var(--surface); border-radius: 4px; padding: clamp(1.75rem, 3vw, var(--space-xl)); color: var(--ink-text); box-shadow: 0 30px 60px -30px rgba(0,0,0,0.5); }
+  /* TWM: the two-step form is gone — no step dividers, no advisor toggle group, no goal
+     select. TWM's Contact sections expose a form field set, not a custom multi-step flow,
+     so this is truncated to the fields a first contact actually needs. `.form-step` and
+     `.toggle-group` are removed with their markup. */
+  .form-panel textarea {
+    width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--line-cool); border-radius: 2px;
+    font-family: var(--sans); font-size: var(--text-body); color: var(--ink-text);
+    background: #fff; resize: vertical; min-height: 104px;
+  }
+  .form-panel textarea:focus { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm) var(--space-md); margin-bottom: var(--space-md); }
+  .form-grid .full { grid-column: 1 / -1; }
+  label { display: block; font-size: var(--text-small); font-weight: 600; margin-bottom: 0.35rem; color: var(--ink-text); }
+  input, select { width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--line-cool); border-radius: 2px; font-family: var(--sans); font-size: var(--text-body); background: #fff; color: var(--ink-text); }
+  input:focus, select:focus { outline: 2px solid var(--navy); outline-offset: 1px; }
+  .form-panel .btn { width: 100%; justify-content: center; margin-top: var(--space-sm); }
+  .form-privacy { font-size: var(--text-small); color: var(--slate-muted); margin-top: var(--space-sm); }
+
+  /* ============================================================= FOOTER */
+  footer { background: #07101A; color: #A9B6C0; padding: var(--space-2xl) 0 var(--space-lg); }
+  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer-brand .brand { margin-bottom: var(--space-md); }
+  .footer-brand p { font-size: var(--text-small); color: #8A98A3; max-width: 280px; }
+  .footer-col h5 { font-family: var(--sans); color: #fff; font-size: var(--text-small); letter-spacing: var(--tracking-wide); text-transform: uppercase; margin-bottom: var(--space-md); }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .footer-col a, .footer-col li { font-size: var(--text-small); color: #A9B6C0; }
+  .footer-col a:hover { color: var(--gold-soft); }
+  .footer-legal { font-size: var(--text-small); line-height: var(--leading-relaxed); color: #7E8C97; max-width: 1000px; margin-top: var(--space-lg); }
+  .footer-legal p { color: #7E8C97; font-size: var(--text-small); margin-bottom: var(--space-sm); }
+  .footer-legal a { text-decoration: underline; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-lg); font-size: var(--text-small); color: #7E8C97; flex-wrap: wrap; gap: var(--space-sm); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .q-card[open] .q-reveal { animation: none; }
+    .q-card, .q-card:hover { transition: none; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ============================================================= RESPONSIVE */
+  @media (max-width: 940px) {
+    .story-grid, .contact-grid { grid-template-columns: 1fr; }
+    .story-media { order: -1; }
+    .story-media img { height: 440px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+    .step::after { display: none; }
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    /* The questions stack is already single-column at every width, so it needs no
+       column override here — only the reserved question height, which stops earning
+       its keep once the cards are full-width. */
+    .q-text { min-height: 0; }
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    .wm-grid { grid-template-columns: 1fr; }
+    /* Narrow viewports have no room for a side-lit scrim — go vertical so the copy
+       always sits on the dark end of the gradient. */
+    .believe-scrim {
+      background: linear-gradient(180deg, rgba(10,22,34,0.70) 0%, rgba(10,22,34,0.93) 42%, rgba(10,22,34,0.97) 100%);
+    }
+    /* The .believe.has-aurora rule outranks the single-class one above, so the aurora
+       variant needs its own vertical version or it would keep the side-lit ramp here. */
+    .believe.has-aurora .believe-scrim {
+      background:
+        linear-gradient(180deg, rgba(10,22,34,0.66) 0%, rgba(10,22,34,0.90) 42%, rgba(10,22,34,0.96) 100%),
+        radial-gradient(58% 52% at 14% 106%, rgba(245,166,35,0.16) 0%, rgba(10,22,34,0) 62%);
+    }
+    .believe-copy { max-width: none; }
+    /* Same story in the hero: the copy now fills the width, so the side-lit ramp stops
+       protecting it. Go vertical and push the aurora further right, behind the dial. */
+    .hero-photo { object-position: 78% 40%; }
+    .hero.has-photo::before {
+      background:
+        linear-gradient(180deg, rgba(10,22,34,0.70) 0%, rgba(10,22,34,0.86) 55%, rgba(10,22,34,0.94) 100%),
+        radial-gradient(60% 55% at 12% 108%, rgba(245,166,35,0.18) 0%, rgba(10,22,34,0) 60%);
+    }
+    /* Once the story grid collapses to one column, .story-media spans the full container,
+       so the badge's -26px offset pushed 2px past the viewport and produced a horizontal
+       scroll. Pull it inside for the whole single-column band, not just below 620px. */
+    .story-media .dial-badge { right: 14px; bottom: 14px; }
+  }
+  @media (max-width: 620px) {
+    .serve-grid, .cap-grid, .community-grid, .team-grid, .form-grid, .steps, .pillar-grid { grid-template-columns: 1fr; }
+    /* Single column — nothing left to align against, so stop reserving the second line. */
+    .p-imperative { min-height: 0; }
+    /* Trust line: stacked and centered. Lives in the proof band now, not the hero. */
+    .trust-line { flex-direction: column; align-items: center; text-align: center; gap: 0.55rem; }
+    .trust-line .dot { display: none; }
+    /* Audience strip: left-aligned vertical stack */
+    .proof-inner { align-items: flex-start; text-align: left; }
+    .proof-items { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+    .story-media .dial-badge { right: 14px; bottom: 14px; }
+    section { padding: var(--space-xl) 0; }
+  }

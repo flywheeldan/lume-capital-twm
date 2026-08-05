@@ -29,8 +29,9 @@ service is offering). They were always two separate TWM sections sharing one hea
 
 **Forbes badges, not text pills.** The awards were previously rendered as text with a gold
 star drawn in-house, which reads as a self-awarded ribbon. They are now the licensed
-Forbes/SHOOK badges, cropped from the supplied composite. They appear on the homepage
-only, and the SHOOK disclosure travels with them — About and Team carry credential marks
+Forbes/SHOOK badges, cropped from the supplied composite (which was one image saved under
+three identical filenames). All three appear on the homepage only, and the SHOOK
+disclosure travels with them — About and Team carry credential marks
 alone, which make no ranking claim and so need no disclosure.
 
 **Why Believe moved to About.** In TWM, copy sits directly on a photograph only in a Hero
@@ -76,10 +77,11 @@ the section background colors, and the two aurora images at their current resolu
 - **Third-party award logos sit outside the NM brand library.** The Forbes badges are
   licensed, but their use on the site still wants compliance sign-off, and they are black
   tiles with red/green accents — off both the site palette and the NM PCG palette.
-- **The supplied Forbes composite also contains a 2024 badge** for the same award as one
-  of the 2025 ones. It is deliberately not used: repeating an award across years dates the
-  achievement rather than compounding it. Using it would require adding its data date to
-  the disclosure.
+- **The 2024 badge shares its award name with one of the 2025 badges** — it is the prior
+  year of Top Financial Security Professionals, not a separate accreditation. All three
+  are shown per direction. Its disclosure data date (12/31/23) is INFERRED from the
+  year-over-year pattern and is NOT sourced from approved collateral — confirm with
+  Compliance before this goes client-facing.
 - **Chris Moore has no published email.** The current site omits it too, so it is treated
   as deliberate; his card carries his phone plus a link to the contact form.
 - **614-221-5287 is a shared office line** for Connor, Sydney and Kevin, not a direct line.

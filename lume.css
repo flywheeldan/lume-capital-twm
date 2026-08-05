@@ -692,10 +692,13 @@
      run from one paragraph to three, so the back face scrolls rather than the card
      growing. (This is the same reason the questions section stayed an accordion — there
      the varying lengths were the point, and nothing sat beside a card to be stretched.) */
-  .team-card.is-flip { height: 540px; perspective: 1400px; background: none; border: none; overflow: visible; }
+  .team-card.is-flip {
+    position: relative; height: 560px; perspective: 1400px;
+    background: none; border: none; overflow: visible;
+  }
   .team-card.is-flip:hover { transform: none; box-shadow: none; }
   .flip-input {
-    position: absolute; width: 1px; height: 1px; margin: 0;
+    position: absolute; top: 0; left: 0; width: 1px; height: 1px; margin: 0;
     opacity: 0; pointer-events: none;
   }
   .flip-inner {
@@ -708,21 +711,51 @@
     background: var(--surface); border: 1px solid var(--line); border-radius: 3px;
     overflow: hidden; display: flex; flex-direction: column;
   }
-  .flip-back { transform: rotateY(180deg); padding: var(--space-md); }
-  .team-card.is-flip .flip-front img { height: 260px; flex: none; }
-  .flip-front .team-info { flex: 1 1 auto; display: flex; flex-direction: column; }
-  .flip-front .team-contact { margin-top: auto; }
-  /* Focus ring lives on the label, since the real control is visually hidden. */
-  .flip-input:focus-visible ~ .flip-inner .flip-btn { outline: 2px solid var(--navy); outline-offset: 2px; }
+  .flip-back { transform: rotateY(180deg); padding: var(--space-md) var(--space-md) 0; }
+  /* Shorter portrait on the flip card than on the homepage snippet: the front face has a
+     fixed height to share with the name, role, note and contact block, and at 260px the
+     trigger could fall past the clipped bottom edge on the longer cards. */
+  .team-card.is-flip .flip-front img { height: 210px; flex: none; }
+  .flip-front .team-info { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+  .flip-front .team-note { flex: 0 1 auto; overflow: hidden; }
+  /* Contact links sit ABOVE the full-face trigger so they stay independently clickable. */
+  .flip-front .team-contact { margin-top: auto; position: relative; z-index: 2; }
+
+  /* The whole face is the trigger — this is a card being turned over, not a control being
+     pressed. The visible cue is pinned to the face rather than sitting in the content
+     flow, so it can never be pushed out of the clipped area by a long name or role. */
   .flip-btn {
-    cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
-    font-family: var(--sans); font-size: var(--text-small); font-weight: 600;
-    color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 2px;
-    align-self: flex-start; margin-top: var(--space-sm);
+    position: absolute; inset: 0; z-index: 1; cursor: pointer;
+    display: flex; align-items: flex-end; justify-content: flex-end;
+    padding: var(--space-md); font-size: 0;
   }
-  .flip-btn:hover { color: var(--gold-deep); }
-  .flip-back h4 { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); font-weight: 500; }
-  .flip-back-body { flex: 1 1 auto; overflow-y: auto; margin-top: 0.6rem; padding-right: 0.35rem; }
+  .flip-btn span {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--sans); font-size: var(--text-small); font-weight: 600;
+    color: var(--navy); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 2px; padding: 0.4rem 0.7rem;
+    box-shadow: 0 6px 16px -10px rgba(14,73,123,0.5);
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .flip-btn span::after {
+    content: ""; width: 11px; height: 11px; flex: none;
+    border: 1.6px solid currentColor; border-radius: 50%;
+    border-right-color: transparent; border-bottom-color: transparent;
+    transform: rotate(45deg);
+  }
+  .team-card.is-flip:hover .flip-btn span { color: var(--gold-deep); border-color: var(--gold); }
+  /* Focus ring lives on the cue, since the real control is visually hidden. */
+  .flip-input:focus-visible ~ .flip-inner .flip-front .flip-btn span { outline: 2px solid var(--navy); outline-offset: 2px; }
+  .flip-back .flip-btn { align-items: flex-start; justify-content: flex-start; }
+  .flip-back h4 { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); font-weight: 500; position: relative; z-index: 2; }
+  /* Scrolls rather than growing the card — bios run one paragraph to three, and a flip
+     commits every card in the row to one height. z-index keeps it above the face trigger
+     so the scrollbar stays usable. */
+  .flip-back-body {
+    flex: 1 1 auto; overflow-y: auto; min-height: 0;
+    margin-top: 0.6rem; padding-right: 0.35rem; padding-bottom: 3.2rem;
+    position: relative; z-index: 2;
+  }
   .flip-back-body p { font-size: var(--text-small); color: var(--slate); }
   .flip-back-body p + p { margin-top: 0.6rem; }
   .flip-back-body .lic {

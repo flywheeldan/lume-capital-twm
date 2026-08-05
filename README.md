@@ -30,7 +30,7 @@ service is offering). They were always two separate TWM sections sharing one hea
 **Forbes badges, not text pills.** The awards were previously rendered as text with a gold
 star drawn in-house, which reads as a self-awarded ribbon. They are now the licensed
 Forbes/SHOOK badges, cropped from the supplied composite (which was one image saved under
-three identical filenames). All three appear on the homepage only, and the SHOOK
+three identical filenames). Both appear on the homepage only, and the SHOOK
 disclosure travels with them — About and Team carry credential marks
 alone, which make no ranking claim and so need no disclosure.
 
@@ -57,6 +57,11 @@ Banner it keeps its treatment intact.
 - **Team placeholder tile dropped** — the dashed "Growing, carefully." card wasn't a
   person and has no Team-section equivalent; its message moved to the page header.
 - **Styles extracted** to a shared `lume.css` rather than duplicated across five pages.
+- **Bios are flip cards.** An accordion was wrong for a grid: a row stretches to its
+  tallest item, so opening one bio pushed every card in that row taller. Clicking anywhere
+  on a card turns it over. Driven by a visually-hidden checkbox — still no JavaScript,
+  still keyboard-operable — with contact links layered above the trigger so they stay
+  independently clickable. Reduced-motion users get an instant face swap.
 
 ## Deliberately unchanged
 
@@ -77,11 +82,10 @@ the section background colors, and the two aurora images at their current resolu
 - **Third-party award logos sit outside the NM brand library.** The Forbes badges are
   licensed, but their use on the site still wants compliance sign-off, and they are black
   tiles with red/green accents — off both the site palette and the NM PCG palette.
-- **The 2024 badge shares its award name with one of the 2025 badges** — it is the prior
-  year of Top Financial Security Professionals, not a separate accreditation. All three
-  are shown per direction. Its disclosure data date (12/31/23) is INFERRED from the
-  year-over-year pattern and is NOT sourced from approved collateral — confirm with
-  Compliance before this goes client-facing.
+- **The supplied composite also held a 2024 badge** — the prior year of Top Financial
+  Security Professionals, the same award as one of the 2025 badges rather than a separate
+  accreditation. It is not used: its disclosure data date could not be sourced from
+  approved collateral, and every award shown must carry one.
 - **Chris Moore has no published email.** The current site omits it too, so it is treated
   as deliberate; his card carries his phone plus a link to the contact form.
 - **614-221-5287 is a shared office line** for Connor, Sydney and Kevin, not a direct line.

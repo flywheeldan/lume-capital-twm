@@ -711,56 +711,54 @@
     background: var(--surface); border: 1px solid var(--line); border-radius: 3px;
     overflow: hidden; display: flex; flex-direction: column;
   }
-  .flip-back { transform: rotateY(180deg); padding: var(--space-md) var(--space-md) 0; }
-  /* Shorter portrait on the flip card than on the homepage snippet: the front face has a
-     fixed height to share with the name, role, note and contact block, and at 260px the
-     trigger could fall past the clipped bottom edge on the longer cards. */
-  .team-card.is-flip .flip-front img { height: 210px; flex: none; }
+  .flip-front { transform: rotateY(0deg); }
+  .flip-back { transform: rotateY(180deg); }
+  /* Shorter portrait than the homepage snippet: the front face has a fixed height to
+     share with the name, role, note, contact block AND the trigger row below them. */
+  .team-card.is-flip .flip-front img { height: 200px; flex: none; }
   .flip-front .team-info { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
   .flip-front .team-note { flex: 0 1 auto; overflow: hidden; }
-  /* Contact links sit ABOVE the full-face trigger so they stay independently clickable. */
-  .flip-front .team-contact { margin-top: auto; position: relative; z-index: 2; }
+  .flip-front .team-contact { margin-top: auto; }
 
-  /* The whole face is the trigger — this is a card being turned over, not a control being
-     pressed. The visible cue is pinned to the face rather than sitting in the content
-     flow, so it can never be pushed out of the clipped area by a long name or role. */
+  /* FRONT trigger: a constrained text link in its own reserved row at the foot of the
+     card. It previously overlaid the entire face, which put it directly on top of the
+     contact block — and since those links sat above it, clicking the cue on a card whose
+     email fell under it fired the mailto instead of flipping. Nothing overlaps now. */
   .flip-btn {
-    position: absolute; inset: 0; z-index: 1; cursor: pointer;
-    display: flex; align-items: flex-end; justify-content: flex-end;
-    padding: var(--space-md); font-size: 0;
-  }
-  .flip-btn span {
-    display: inline-flex; align-items: center; gap: 0.4rem;
+    flex: none; display: block; cursor: pointer;
+    padding: 0.75rem var(--space-md);
+    border-top: 1px solid var(--line);
     font-family: var(--sans); font-size: var(--text-small); font-weight: 600;
     color: var(--navy); background: var(--surface);
-    border: 1px solid var(--line); border-radius: 2px; padding: 0.4rem 0.7rem;
-    box-shadow: 0 6px 16px -10px rgba(14,73,123,0.5);
-    transition: color .18s ease, border-color .18s ease;
+    transition: color .18s ease, background .18s ease;
   }
-  .flip-btn span::after {
-    content: ""; width: 11px; height: 11px; flex: none;
-    border: 1.6px solid currentColor; border-radius: 50%;
-    border-right-color: transparent; border-bottom-color: transparent;
-    transform: rotate(45deg);
+  .flip-btn:hover { color: var(--gold-deep); background: var(--paper); }
+  .flip-input:focus-visible ~ .flip-inner .flip-btn { outline: 2px solid var(--navy); outline-offset: -2px; }
+
+  /* BACK: the whole face is the label, so clicking anywhere turns the card back — no
+     separate button. It is also the scroll container, which is why the bio content sits
+     inside it rather than beside it. */
+  .flip-back-face {
+    position: absolute; inset: 0; display: block; cursor: pointer;
+    overflow-y: auto; padding: var(--space-md);
   }
-  .team-card.is-flip:hover .flip-btn span { color: var(--gold-deep); border-color: var(--gold); }
-  /* Focus ring lives on the cue, since the real control is visually hidden. */
-  .flip-input:focus-visible ~ .flip-inner .flip-front .flip-btn span { outline: 2px solid var(--navy); outline-offset: 2px; }
-  .flip-back .flip-btn { align-items: flex-start; justify-content: flex-start; }
-  .flip-back h4 { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); font-weight: 500; position: relative; z-index: 2; }
-  /* Scrolls rather than growing the card — bios run one paragraph to three, and a flip
-     commits every card in the row to one height. z-index keeps it above the face trigger
-     so the scrollbar stays usable. */
-  .flip-back-body {
-    flex: 1 1 auto; overflow-y: auto; min-height: 0;
-    margin-top: 0.6rem; padding-right: 0.35rem; padding-bottom: 3.2rem;
-    position: relative; z-index: 2;
-  }
+  .flip-back h4 { font-family: var(--sans-display); font-size: var(--text-h4); color: var(--navy); font-weight: 500; }
+  .flip-back-body { margin-top: 0.6rem; }
   .flip-back-body p { font-size: var(--text-small); color: var(--slate); }
   .flip-back-body p + p { margin-top: 0.6rem; }
   .flip-back-body .lic {
     margin-top: 0.75rem; padding-top: 0.6rem; border-top: 1px solid var(--line);
     color: var(--slate-muted);
+  }
+
+  /* Safety net: if an engine cannot do 3D, the flip degrades to a plain face swap rather
+     than a card that appears to do nothing when clicked. */
+  @supports not (transform-style: preserve-3d) {
+    .flip-inner { transition: none; }
+    .flip-front, .flip-back { transform: none; backface-visibility: visible; }
+    .flip-back { display: none; }
+    .flip-input:checked ~ .flip-inner .flip-front { display: none; }
+    .flip-input:checked ~ .flip-inner .flip-back { display: flex; }
   }
 
   /* ============================================================= RECOGNITION / COMMUNITY

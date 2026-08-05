@@ -12,11 +12,26 @@ assembled from what TWM ships.
 
 | Page | Hero Banner (1 max per page) | Sections |
 |---|---|---|
-| `index.html` | aurora hero | trust + audience band, story teaser, capabilities teaser, closing CTA |
-| `about.html` | **"What We Believe"** over the aurora | Chris's story, five questions, four pillars |
-| `services.html` | — (solid Banner Text header) | who we serve, Lume Framework, capabilities |
-| `team.html` | — (solid Banner Text header) | team, recognition & community |
+| `index.html` | aurora hero | trust + audience band, who we serve, story teaser, framework, team snippet, recognition, closing CTA |
+| `about.html` | **"What We Believe"** over the aurora | Chris's story, five questions, principles, **The Lume Framework**, credentials |
+| `services.html` | — (solid Banner Text header) | who we serve, what we coordinate, capabilities |
+| `team.html` | — (solid Banner Text header) | team with contact + bios, credentials, community |
 | `contact.html` | — (solid Banner Text header) | contact |
+
+**The homepage is a hub.** Every band previews an interior page and ends in a link to it,
+so a referral visitor can answer *who are these people, do they work with people like me,
+are they legitimate, and what happens if I call* without clicking. Nav is a fallback for
+people already convinced, not a bridge.
+
+**The Framework is split.** The five process stages live on About (how the firm works is
+identity); "what we coordinate" — the three disciplines — stays on Services (scope of
+service is offering). They were always two separate TWM sections sharing one heading.
+
+**Forbes badges, not text pills.** The awards were previously rendered as text with a gold
+star drawn in-house, which reads as a self-awarded ribbon. They are now the licensed
+Forbes/SHOOK badges, cropped from the supplied composite. They appear on the homepage
+only, and the SHOOK disclosure travels with them — About and Team carry credential marks
+alone, which make no ranking claim and so need no disclosure.
 
 **Why Believe moved to About.** In TWM, copy sits directly on a photograph only in a Hero
 Banner or Banner Text. Every Singular Content variant with a background image forces a
@@ -58,6 +73,16 @@ the section background colors, and the two aurora images at their current resolu
 - **Bulleted lists inside multi-item paragraphs** (Who We Serve) are unconfirmed with NM.
 - **Sequential Content maximum tiles** is undocumented; the framework has five steps.
 - **Contact form field configurability** is unconfirmed.
+- **Third-party award logos sit outside the NM brand library.** The Forbes badges are
+  licensed, but their use on the site still wants compliance sign-off, and they are black
+  tiles with red/green accents — off both the site palette and the NM PCG palette.
+- **The supplied Forbes composite also contains a 2024 badge** for the same award as one
+  of the 2025 ones. It is deliberately not used: repeating an award across years dates the
+  achievement rather than compounding it. Using it would require adding its data date to
+  the disclosure.
+- **Chris Moore has no published email.** The current site omits it too, so it is treated
+  as deliberate; his card carries his phone plus a link to the contact form.
+- **614-221-5287 is a shared office line** for Connor, Sydney and Kevin, not a direct line.
 
 ## Local preview
 

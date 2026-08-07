@@ -11,11 +11,16 @@
 !lume.css
 
 # 3) Pages
+# NOTE: this is an allowlist — a new page is invisible to git until it is added here.
 !index.html
 !about.html
 !services.html
+!client-experience.html
 !team.html
 !contact.html
+# Resources (Calculators + Newsletters, under the "Resources" nav submenu)
+!calculators.html
+!newsletters.html
 
 # 4) Root-level assets referenced by the pages
 !nwm-logo-horizontal-white.svg

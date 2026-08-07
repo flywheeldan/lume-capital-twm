@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculators | Lume Capital</title>
+<meta name="description" content="Northwestern Mutual planning calculators — budgeting, retirement and Roth conversions, business, college funding, insurance and savings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lume.css">
+</head>
+<body>
+
+<!-- ===================================================== LUME DIAL (reusable symbol) -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true" focusable="false">
+  <symbol id="lumeDial" viewBox="0 0 100 100">
+    <polygon points="43.5,6.5 56.5,6.5 50,17.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2.6" fill="none">
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(30 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(60 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(90 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(120 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(150 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(180 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(210 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(240 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(270 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(300 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(330 50 50)"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="site-nav">
+  <nav aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="Northwestern Mutual, Lume Capital">
+      <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li class="nav-has-sub">
+        <a href="calculators.html">Resources
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="calculators.html" aria-current="page">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer" id="hamburgerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li>
+        <span class="drawer-label">Resources</span>
+        <ul class="drawer-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-contact">
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================================================== PAGE HEADER (Banner Text 1)
+       Same solid-colour header as the other interior pages; Hero Banner allowance unspent. -->
+  <section class="page-header">
+    <svg class="ph-dial" aria-hidden="true"><use href="#lumeDial"/></svg>
+    <div class="page-header-inner">
+      <h1>Run the numbers yourself.</h1>
+      <p class="lead">Northwestern Mutual&rsquo;s planning calculators, gathered in one place. They are a starting point, not a plan &mdash; useful for framing a question before you bring it to us.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== CALCULATOR INDEX
+       TWM Multi-Item Content 7 — 3-column text. Six categories fill 3 + 3 exactly.
+
+       Deliberately plain: a category heading over a list of links. No cards, no icons,
+       no counts, no per-item descriptions. Someone on this page arrived knowing what
+       they wanted; the job is to get out of the way. The restraint is the treatment.
+
+       Every link leaves the site for a Northwestern Mutual property, which is why the
+       new tab is announced once above the grid rather than 28 times inside it — a
+       per-link warning at this density is noise, not help. -->
+  <section id="calculators">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Planning calculators.</h2>
+        <p class="lead">Grouped by the question they answer. Each one opens in a new tab on Northwestern Mutual&rsquo;s site.</p>
+      </div>
+
+      <div class="res-grid">
+
+        <div class="res-group">
+          <h3>Budget</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/budget03" target="_blank" rel="noopener">How much am I spending?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/budget04" target="_blank" rel="noopener">Should I pay off debt or invest in savings?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/budget06" target="_blank" rel="noopener">How much should I set aside for emergencies?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/budget07" target="_blank" rel="noopener">How much will it cost to raise a child?</a></li>
+          </ul>
+        </div>
+
+        <div class="res-group">
+          <h3>IRA</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira02" target="_blank" rel="noopener">Should I convert my IRA into a Roth IRA?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira03" target="_blank" rel="noopener">How much may I contribute to an IRA?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira01a" target="_blank" rel="noopener">Which will provide the most retirement income?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira01b" target="_blank" rel="noopener">How will tax rate changes affect my decision?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira01d" target="_blank" rel="noopener">What option is best for estate planning?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/rothira01g" target="_blank" rel="noopener">When should I begin saving?</a></li>
+          </ul>
+        </div>
+
+        <div class="res-group">
+          <h3>Small Business</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/business01" target="_blank" rel="noopener">How much do I need to start my business?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/business02" target="_blank" rel="noopener">Should I buy or lease equipment?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/business04" target="_blank" rel="noopener">What term of loan should I choose?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/business08" target="_blank" rel="noopener">What is my business worth today?</a></li>
+          </ul>
+        </div>
+
+        <div class="res-group">
+          <h3>College Planning</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/college01" target="_blank" rel="noopener">What will it take to save for a college education?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/college02" target="_blank" rel="noopener">What is the value of higher education?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/college03" target="_blank" rel="noopener">What investments can I use to save for college?</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTENT QA: "Retirement Income Calculator" was supplied under Insurance and is
+             left where it was given rather than moved. It reads oddly beside life, LTC and
+             disability — worth confirming with Lume whether it belongs in its own
+             Retirement category, which would make the grid 7 and wrap 3 + 3 + 1. -->
+        <div class="res-group">
+          <h3>Insurance</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/insurance01" target="_blank" rel="noopener">How much life insurance do I need?</a></li>
+            <li><a href="https://www.whatcarecosts.com/northwesternmutual/nm1" target="_blank" rel="noopener">Long-Term Care Cost Calculator</a></li>
+            <li><a href="https://www.northwesternmutual.com/disability-insurance-calculator/" target="_blank" rel="noopener">Disability Income Calculator</a></li>
+            <li><a href="https://www.northwesternmutual.com/life-insurance-calculator" target="_blank" rel="noopener">Life Insurance Calculator</a></li>
+            <li><a href="https://www.northwesternmutual.com/retirement-calculator/" target="_blank" rel="noopener">Retirement Income Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="res-group">
+          <h3>Savings</h3>
+          <ul class="res-list">
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings01" target="_blank" rel="noopener">What will it take to become a millionaire?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings02" target="_blank" rel="noopener">How much will my savings be worth?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings03" target="_blank" rel="noopener">What will it take to save for a vehicle, home, etc.?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings08" target="_blank" rel="noopener">How much difference will the rate make?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings15" target="_blank" rel="noopener">Which is better: cash or payments?</a></li>
+            <li><a href="https://calculator.northwesternmutual.com/response/lf-northwesternmutual/calc/savings06" target="_blank" rel="noopener">How will taxes and inflation affect my savings?</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Standard caveat pattern, same .q-note class used for the composite client
+           questions on About and the cadence note on Client Experience. -->
+      <p class="q-note">These calculators are educational tools provided by Northwestern Mutual. Their output is an estimate based on the assumptions you enter, not a recommendation, projection, or guarantee, and it does not account for your full circumstances.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== CLOSING CTA
+       TWM Singular Content 3 — heading, message, CTA, background colour only. -->
+  <section class="ink-section">
+    <div class="container">
+      <div class="section-head center" style="margin-bottom:var(--space-lg);">
+        <h2>A number is a starting point. A plan is the&nbsp;work.</h2>
+        <p class="lead">If something you calculated here surprised you &mdash; in either direction &mdash; that is usually worth a conversation.</p>
+      </div>
+      <div class="blueprint-cta" style="margin-top:0;">
+        <a href="contact.html" class="btn btn-gold">Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== ONWARD PATH -->
+  <section class="next-step" style="padding:0;">
+    <div class="container">
+      <div>
+        <span class="ns-label">Next</span>
+        <div class="ns-title">What we&rsquo;re writing about.</div>
+      </div>
+      <a href="newsletters.html" class="textlink">Read our newsletters
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+        </div>
+        <p>A private wealth management practice since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+16142226065">614.222.6065</a></li>
+          <li>1349 W Lane Ave</li>
+          <li>Upper Arlington, Columbus OH 43221</li>
+          <li><a href="contact.html">Start a conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="about.html">Chris&rsquo;s Story</a></li>
+          <li><a href="about.html#questions">The Questions</a></li>
+          <li><a href="about.html#framework">The Lume Framework</a></li>
+          <li><a href="services.html#serve">Who We Serve</a></li>
+          <li><a href="client-experience.html">Client Experience</a></li>
+          <li><a href="team.html">The Team</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Compliance</h5>
+        <ul>
+          <li><a href="#">FINRA BrokerCheck</a></li>
+          <li><a href="#">Form CRS</a></li>
+          <li><a href="#">Privacy Notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>Members use <strong>Lume Capital</strong> as a marketing name for doing business as representatives of Northwestern Mutual. Lume Capital is not a registered investment adviser, broker-dealer, insurance agency, federal savings bank, or legal entity. Northwestern Mutual is the marketing name for The Northwestern Mutual Life Insurance Company (NM) (life and disability insurance, annuities, and life insurance with long-term care benefits) and its subsidiaries, including Northwestern Long Term Care Insurance Company (NLTC) (long-term care insurance), Northwestern Mutual Investment Services, LLC (NMIS) (investment brokerage services), a registered investment adviser, broker-dealer, and member of FINRA and SIPC, and Northwestern Mutual Wealth Management Company&reg; (NMWMC) (investment advisory and trust services), a federal savings bank. NM and its subsidiaries are in Milwaukee, WI. Christopher M. Moore is licensed in Ohio and California. To view detailed disclosures regarding individual representatives, view their information at <a href="https://lumecapital.nm.com">lumecapital.nm.com</a>.</p>
+      <p>Financial representatives do not render tax or legal advice. Consult with a tax or legal professional for advice specific to your situation.</p>
+      <p>Securities and mutual fund orders cannot be placed electronically through this site. Orders may only be placed by phone or in person with your advisor.</p>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Northwestern Mutual. All rights reserved.</span>
+      <span>Upper Arlington &middot; Columbus, Ohio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburgerBtn').addEventListener('click', function () {
+    var drawer = document.getElementById('mobileDrawer');
+    var isOpen = drawer.classList.toggle('open');
+    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>

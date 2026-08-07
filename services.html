@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Services | Lume Capital</title>
-<meta name="description" content="Built around your values and built to carry them forward — who we serve, the Lume Framework, and the full depth of what we coordinate on your behalf.">
+<meta name="description" content="Built around your values and built to carry them forward — who we serve, and the three disciplines we coordinate on your behalf as a single engagement.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,6 +43,16 @@
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
       <li><a href="services.html" aria-current="page">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li class="nav-has-sub">
+        <a href="calculators.html">Resources
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
       <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -59,6 +69,14 @@
     <ul>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li>
+        <span class="drawer-label">Resources</span>
+        <ul class="drawer-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
       <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -103,7 +121,6 @@
       </div>
       <div class="serve-grid">
         <article class="serve-card">
-          <div class="serve-num">01</div>
           <h3>Physicians &amp; Surgeons</h3>
           <p>Full earning power arrives late, all at once, after a decade of training and debt. Your plan has to move fast and protect what took so long to build.</p>
           <ul>
@@ -113,7 +130,6 @@
           </ul>
         </article>
         <article class="serve-card">
-          <div class="serve-num">02</div>
           <h3>Executives &amp; Equity Compensation</h3>
           <p>RSUs, options, and concentrated stock create wealth and risk in the same breath. We help you diversify and plan around it deliberately.</p>
           <ul>
@@ -123,7 +139,6 @@
           </ul>
         </article>
         <article class="serve-card">
-          <div class="serve-num">03</div>
           <h3>Business Owners</h3>
           <p>Your balance sheet and your business are tangled together. We separate personal wealth from enterprise risk and plan toward the exit.</p>
           <ul>
@@ -133,7 +148,6 @@
           </ul>
         </article>
         <article class="serve-card">
-          <div class="serve-num">04</div>
           <h3>Multigenerational Families</h3>
           <p>Wealth that outlasts a single lifetime raises a different set of questions &mdash; about heirs, structures, and the values that travel with the money.</p>
           <ul>
@@ -163,7 +177,7 @@
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-head center">
         <h2>What we coordinate on your&nbsp;behalf.</h2>
-        <p class="lead">Three disciplines, run as one engagement &mdash; so nothing falls between your advisor, your CPA and your attorney.</p>
+        <p class="lead">Run as one engagement rather than three separate relationships &mdash; so nothing falls between your advisor, your CPA and your attorney.</p>
       </div>
       <div class="wm-band" style="margin-top:0;padding-top:0;border-top:none;">
         <div class="wm-grid">
@@ -198,68 +212,32 @@
           </article>
         </div>
       </div>
-
-      <div class="band-more on-ink">
-        <a href="about.html#framework" class="textlink">See the process behind this work
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
+      <!-- No band-more here. The strip at the top of this page already routes to the
+           framework on About, and this band is now followed directly by the closing CTA
+           and the onward path — three consecutive asks was one too many. -->
     </div>
   </section>
 
-  <!-- ===================================================== CAPABILITIES
-       TWM Highlights 2 — 3-column, icon above text. Icons here are placeholders for NM
-       brand-library equivalents. The former ninth "Not sure where to start?" card was an
-       inverted CTA tile; TWM tiles are uniform, so it becomes the section CTA below. -->
-  <section id="capabilities">
+  <!-- ===================================================== CLOSING CTA
+       TWM Singular Content 3 — heading, message, CTA, background colour only.
+
+       REMOVED: the former "#capabilities" section (Highlights 2, eight icon tiles headed
+       "The depth behind the plan"). It restated the two sections above it rather than
+       adding to them — "Executive & Equity Compensation" repeated Who We Serve card 02
+       almost verbatim, "Business Owner & Practice Planning" repeated card 03, and
+       "Risk & Protection" / "Advanced Tax Strategy" / "Charitable & Philanthropic
+       Planning" repeated What We Coordinate's Wealth Protection / Wealth Enhancement /
+       Charitable Giving. A reader scrolling this page met the same taxonomy three times.
+       That claim is not lost: Client Experience now proves it with 34 dated activities
+       instead of asserting it a third time. Each section here has one job now — Who We
+       Serve is WHO, What We Coordinate is WHAT, Client Experience is WHEN.
+
+       The CTA below was nested at the foot of that section and is the page's conversion
+       moment, so it is promoted to its own band. btn-navy, not btn-gold: the section sits
+       on light paper. .cap-grid/.cap-card stay in lume.css — Client Experience uses them. -->
+  <section>
     <div class="container">
-      <div class="section-head center">
-        <h2>The depth behind the plan.</h2>
-        <p class="lead">Great planning looks simple on the surface because a great deal is happening underneath it. Here is some of what that involves.</p>
-      </div>
-      <div class="cap-grid">
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7"/></svg></div>
-          <h3>Investment Management &amp; Research</h3>
-          <p>Portfolios built around your real timeline and risk &mdash; not an off-the-shelf model &mdash; backed by independent research.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-          <h3>Advanced Tax Strategy</h3>
-          <p>Roth conversions, tax-efficient withdrawals, and multi-year planning to keep more of what you&rsquo;ve earned across a lifetime.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a4 4 0 018 0v2M12 12v4"/></svg></div>
-          <h3>Retirement Income Engineering</h3>
-          <p>Turning a career of savings into dependable, tax-aware income &mdash; sequenced around when you actually want to stop.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l7 4v6c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Executive &amp; Equity Compensation</h3>
-          <p>Concentrated-stock diversification, RSU/option planning, and 10b5-1 coordination around liquidity events.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
-          <h3>Business Owner &amp; Practice Planning</h3>
-          <p>Entity strategy, retirement-plan design, succession and exit planning &mdash; separating personal wealth from enterprise risk.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/></svg></div>
-          <h3>Risk &amp; Protection</h3>
-          <p>Disability, life, and liability coverage sized to what a disruption would actually cost your family or practice.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0114 0M18 6l2-2M6 6L4 4"/></svg></div>
-          <h3>Estate &amp; Legacy Coordination</h3>
-          <p>Working alongside your attorney to pass on wealth intentionally &mdash; and to the next generation, on purpose.</p>
-        </article>
-        <article class="cap-card">
-          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20.5C7.6 16.5 4 13.9 4 10.6A4.1 4.1 0 018.1 6.5c1.6 0 3 .8 3.9 2.1.9-1.3 2.3-2.1 3.9-2.1A4.1 4.1 0 0120 10.6c0 3.3-3.6 5.9-8 9.9z"/></svg></div>
-          <h3>Charitable &amp; Philanthropic Planning</h3>
-          <p>Donor-advised funds, qualified charitable distributions, and gifting strategy &mdash; structured so your generosity is as deliberate as the rest of the plan.</p>
-        </article>
-      </div>
-      <div class="blueprint-cta">
+      <div class="blueprint-cta" style="margin-top:0;">
         <p class="lead" style="text-align:center;max-width:52ch;margin:0 auto var(--space-md);">Not sure where to start? Most clients don&rsquo;t arrive with a tidy question. A conversation is how we find it.</p>
         <a href="contact.html" class="btn btn-navy">Start a Conversation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -268,14 +246,18 @@
     </div>
   </section>
 
-  <!-- ===================================================== ONWARD PATH -->
+  <!-- ===================================================== ONWARD PATH
+       Points at Client Experience, not Team. This used to be byte-identical to the card
+       at the foot of Client Experience, so a visitor taking the chain met the same
+       "meet the team" card twice in a row. The chain now reads
+       About → Services → Client Experience → Team → Contact. -->
   <section class="next-step" style="padding:0;">
     <div class="container">
       <div>
         <span class="ns-label">Next</span>
-        <div class="ns-title">The people who will know your story.</div>
+        <div class="ns-title">The rhythm all of this runs on.</div>
       </div>
-      <a href="team.html" class="textlink">Meet the team who does this work
+      <a href="client-experience.html" class="textlink">See how the year actually unfolds
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -292,7 +274,7 @@
           <span class="brand-divider" aria-hidden="true"></span>
           <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
         </div>
-        <p>A private wealth management practice serving Central Ohio since 2009.</p>
+        <p>A private wealth management practice since 2009.</p>
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
@@ -310,8 +292,10 @@
           <li><a href="about.html#questions">The Questions</a></li>
           <li><a href="about.html#framework">The Lume Framework</a></li>
           <li><a href="services.html#serve">Who We Serve</a></li>
-          <li><a href="services.html#capabilities">Capabilities</a></li>
+          <li><a href="client-experience.html">Client Experience</a></li>
           <li><a href="team.html">The Team</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
         </ul>
       </div>
       <div class="footer-col">

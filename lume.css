@@ -208,6 +208,47 @@
   }
   nav ul.nav-links a:hover { color: #fff; }
   nav ul.nav-links a:hover::after { width: 100%; }
+  /* ---- Resources dropdown -------------------------------------------------
+     The site's only nav submenu, and still no JavaScript: hover opens it, and
+     :focus-within opens it for keyboard users. The closed state is opacity +
+     pointer-events rather than display:none or visibility:hidden, because both of
+     those make the links unfocusable — Tab would skip straight past the submenu and
+     a keyboard user could never reach Newsletters. The parent is a real link to
+     Calculators as well, so the menu is never the only way in.
+
+     TWM FLAG: whether the TWM nav component supports a second level at all is
+     unconfirmed — this is the one piece of chrome here with no equivalent already
+     proven elsewhere on the site. See README, Known gaps. */
+  .nav-has-sub { position: relative; }
+  .nav-has-sub > a { display: inline-flex; align-items: center; gap: 0.32rem; }
+  .nav-caret { width: 12px; height: 12px; flex: none; transition: transform .16s ease; }
+  .nav-has-sub:hover .nav-caret,
+  .nav-has-sub:focus-within .nav-caret { transform: rotate(180deg); }
+
+  .nav-sub {
+    position: absolute; top: calc(100% + 0.6rem); left: -0.9rem; z-index: 10;
+    min-width: 190px; padding: 0.35rem 0;
+    background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 3px;
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,0.65);
+    list-style: none; display: flex; flex-direction: column;
+    opacity: 0; pointer-events: none; transform: translateY(-5px);
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  /* Bridges the gap between the nav item and the panel so the menu doesn't close
+     while the pointer travels down to it. */
+  .nav-sub::before { content: ""; position: absolute; top: -0.7rem; left: 0; right: 0; height: 0.7rem; }
+  .nav-has-sub:hover .nav-sub,
+  .nav-has-sub:focus-within .nav-sub { opacity: 1; pointer-events: auto; transform: none; }
+
+  nav ul.nav-links .nav-sub a {
+    display: block; padding: 0.5rem 0.9rem;
+    color: rgba(255,255,255,0.86); white-space: nowrap;
+  }
+  /* The gold underline sweep marks top-level items; inside the panel it would read as
+     a second, competing hover state. */
+  nav ul.nav-links .nav-sub a::after { display: none; }
+  nav ul.nav-links .nav-sub a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+
   .nav-cta { display: flex; align-items: center; gap: var(--space-sm); flex: none; }
   /* Hairline between the nav links and the utility cluster: without it the phone number
      sits close enough to "Team" to read as a sixth nav item rather than a way to call. */
@@ -221,20 +262,31 @@
   .mobile-drawer.open { display: flex; }
   .mobile-drawer ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
   .mobile-drawer a { font-size: var(--text-body); font-weight: 600; color: #fff; }
+  /* No hover on touch, so the drawer has no dropdown — Resources is a group label with
+     its two pages already open beneath it. */
+  .drawer-label {
+    font-size: var(--text-small); font-weight: 700; letter-spacing: var(--tracking-wider);
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+  .drawer-sub { padding-left: var(--space-md); margin-top: var(--space-sm); }
+  .mobile-drawer .drawer-sub a { font-size: var(--text-small); color: rgba(255,255,255,0.86); }
   .mobile-contact { display: flex; flex-direction: column; gap: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--ink-line); }
   .mobile-contact .btn { text-align: center; justify-content: center; }
 
-  /* Six nav items + the two-logo lockup + phone + CTA need roughly 1200px of bar to sit
-     comfortably, so the drawer takes over below 1080px rather than the old 940px — at
-     940px the row overflowed and "Team" collided with the phone number. */
-  @media (max-width: 1080px) {
+  /* The bar is now at its documented ceiling: six primary items, and two of them —
+     "Client Experience" and "Resources" — are long. Together with the two-logo lockup,
+     the phone and the CTA that is roughly 1170px of content in a 1200px container, so
+     the drawer takes over below 1120px rather than the old 1080px. (It was 940px before
+     the fifth item, where the row overflowed and "Team" collided with the phone.)
+     A seventh primary item does not fit; anything further belongs under a submenu. */
+  @media (max-width: 1120px) {
     nav ul.nav-links, .nav-cta { display: none; }
     .hamburger { display: block; }
   }
-  /* Between 1081px and the full 1200px container there is room, but not slack — pull the
-     gaps and the phone in rather than letting anything touch. */
-  @media (min-width: 1081px) and (max-width: 1259px) {
-    nav ul.nav-links { gap: 1rem; }
+  /* Between 1121px and the full container there is room, but no slack — pull the gaps
+     and drop the phone rather than letting anything touch. */
+  @media (min-width: 1121px) and (max-width: 1319px) {
+    nav ul.nav-links { gap: 0.9rem; }
     .nav-cta { gap: var(--space-sm); }
     .nav-phone { display: none; }
     nav { padding-inline: var(--space-sm); }
@@ -442,8 +494,23 @@
   }
   /* TWM: 3-up, not 5-up. No TWM section renders five columns; Sequential Content tops
      out at a 3-column tile format, so the five steps wrap 3 + 2. */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl) var(--space-md); margin-top: var(--space-xl); }
-  .step { text-align: center; position: relative; }
+  /* Six tracks, each tile spanning two — which renders as a 3-column grid, but lets an
+     incomplete final row CENTRE instead of hugging the left with a hole at the end.
+     The framework's five stages previously ran 3 + 2 and left the bottom-right cell
+     empty, which read as a missing sixth stage rather than a finished list.
+
+     TWM FLAG: whether Sequential Content 2 centres an incomplete final row is
+     unconfirmed — most builders left-align. If it cannot, the fallback is the native
+     3 + 2 (delete the two nth-child rules below and set grid-template-columns to
+     repeat(3, 1fr)). Nothing else depends on this. See README, Known gaps. */
+  .steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-xl) var(--space-md); margin-top: var(--space-xl); }
+  .step { text-align: center; position: relative; grid-column: span 2; }
+  .steps .step:nth-child(4) { grid-column: 2 / span 2; }
+  .steps .step:nth-child(5) { grid-column: 4 / span 2; }
+  /* The condensed homepage variant runs all five in one row, so it opts out entirely. */
+  .steps.is-compact .step,
+  .steps.is-compact .step:nth-child(4),
+  .steps.is-compact .step:nth-child(5) { grid-column: auto; }
   .step-ring { width: 108px; height: 108px; margin: 0 auto var(--space-md); position: relative; display: grid; place-items: center; }
   .step-ring .dial { width: 108px; height: 108px; color: rgba(251,198,107,0.55); position: absolute; inset: 0; }
   .step-ring .step-num { font-family: var(--sans-display); font-size: var(--text-h2); color: var(--gold-soft); font-weight: 500; }
@@ -498,100 +565,154 @@
   .cap-card p { font-size: var(--text-body); }
 
   /* ============================================================= SUCCESS CHANGES THE QUESTIONS
-     Five "statement cards". The QUESTION is all you see at rest — recognition before
-     explanation. Clicking a card reveals the theme (Purpose / Stewardship / Family /
-     Time / Legacy) and how we approach that conversation.
+     Five "statement cards", question and answer both visible.
 
-     Built on native <details>/<summary> rather than JS-driven flip cards, deliberately:
-     keyboard- and screen-reader-accessible for free, works with JS disabled, and it
-     tolerates the reveals being different lengths (a flip card forces every card to
-     the height of the longest back face).
+     WAS an accordion (native <details>/<summary>, one column, numbered 01–05). Three
+     problems with that: nothing signalled the cards were clickable, so the answers read
+     as missing rather than hidden; the numbers implied a ranking or sequence that does
+     not exist — these are five kinds of question, not five steps; and the single column
+     made a short list feel like a long one. Now a 2-column grid with nothing concealed.
+     Hierarchy is carried by type size, not by a control: the question is large, italic
+     and navy, the answer is body text beneath its theme label.
 
-     TWM: restructured from the original 6-column span grid to a single-column stack,
-     which is what Multi-Item Content 1 (1-Column Accordion) actually renders. Five
-     cards sits inside its nine-accordion maximum. The span arithmetic and the
-     per-breakpoint span resets it required are gone with it. */
-  .q-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-sm); align-items: start; max-width: 900px; margin-inline: auto; }
+     TWM: 2-column text — Multi-Item Content 4, the same section type as Who We Serve.
+     Five cards wrap 2 + 2 + 1, so the fifth spans the full row rather than sitting
+     alone beside a gap. */
+  .q-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); align-items: start; }
   .q-card {
-    position: relative; overflow: hidden;
+    position: relative;
     background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+    border-top: 3px solid var(--navy);
     box-shadow: 0 16px 36px -26px rgba(14,73,123,0.40);
+    padding: var(--space-lg);
     transition: box-shadow .18s ease, border-color .18s ease;
   }
-  .q-card:hover { box-shadow: 0 26px 48px -24px rgba(14,73,123,0.45); border-color: var(--gold); }
-  .q-card[open] { border-color: var(--gold); box-shadow: 0 26px 48px -24px rgba(14,73,123,0.45); }
+  .q-card:hover { box-shadow: 0 26px 48px -24px rgba(14,73,123,0.45); border-top-color: var(--gold); }
+  /* The fifth question has no partner, so it takes the whole row instead of leaving one. */
+  .q-card:last-child { grid-column: 1 / -1; }
 
-  .q-card > summary {
-    list-style: none; cursor: pointer;
-    padding: var(--space-lg);
-    display: flex; flex-direction: column; gap: var(--space-md);
-  }
-  .q-card > summary::-webkit-details-marker { display: none; }
-  .q-card > summary::marker { content: ""; }
-  .q-card > summary:focus-visible { outline: 2px solid var(--navy); outline-offset: -4px; }
-
-  /* Number badge: the Lume dial forms the border, with a serif numeral accent inside. */
-  .q-num { position: relative; flex: none; width: 66px; height: 66px; display: grid; place-items: center; }
-  .q-num .dial { position: absolute; inset: 0; width: 66px; height: 66px; color: var(--gold); }
-  .q-numtext {
-    position: relative; z-index: 1;
-    font-family: var(--font-num); font-size: var(--text-h3); font-weight: 600; line-height: 1;
-    color: var(--navy); font-variant-numeric: lining-nums;
-  }
   .q-text {
-    position: relative; z-index: 1;
     font-family: var(--sans-display); font-size: var(--text-h3); font-style: italic;
     line-height: var(--leading-snug); color: var(--navy); font-weight: 500; letter-spacing: -0.01em;
-    /* Reserve a set number of question lines so CLOSED cards in a row share a baseline
-       instead of ending raggedly. Deliberately in em rather than px: the questions
-       re-wrap when licensed Akzidenz-Grotesk replaces the local Helvetica/Arial
-       fallback, and a pixel height would then be wrong. It is only a floor — a longer
-       question still grows its own card. The wide row-2 cards need one line fewer. */
-    min-height: calc(4 * var(--leading-snug) * 1em);
   }
-  .q-card:nth-of-type(4) .q-text,
-  .q-card:nth-of-type(5) .q-text { min-height: calc(3 * var(--leading-snug) * 1em); }
-
-  /* Open/close affordance — a + that becomes a − */
-  .q-toggle { position: absolute; top: var(--space-lg); right: var(--space-lg); width: 20px; height: 20px; }
-  .q-toggle::before, .q-toggle::after {
-    content: ""; position: absolute; background: var(--gold-deep);
-    transition: transform .22s ease, opacity .22s ease;
-  }
-  .q-toggle::before { left: 0; top: 50%; width: 100%; height: 2px; margin-top: -1px; }
-  .q-toggle::after  { top: 0; left: 50%; height: 100%; width: 2px; margin-left: -1px; }
-  .q-card[open] .q-toggle::after { transform: rotate(90deg); opacity: 0; }
-
-  .q-reveal { padding: 0 var(--space-lg) var(--space-lg); }
-  .q-reveal::before { content: ""; display: block; height: 1px; background: var(--line); margin-bottom: var(--space-md); }
+  /* Hairline between the question and its answer — the same separator the reveal used
+     to draw, kept now that the two sit permanently in one card. */
   .q-label {
     display: block; font-size: var(--text-small); font-weight: 700;
     letter-spacing: var(--tracking-wider); text-transform: uppercase;
     color: var(--gold-deep); margin-bottom: 0.6rem;
+    padding-top: var(--space-md); margin-top: var(--space-md);
+    border-top: 1px solid var(--line);
   }
-  .q-reveal p { font-size: var(--text-body); }
-  .q-reveal p + p { margin-top: 0.7rem; }
-  .q-card[open] .q-reveal { animation: qIn .3s ease both; }
-  @keyframes qIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .q-answer { font-size: var(--text-body); }
+  .q-answer + .q-answer { margin-top: 0.7rem; }
 
   .q-close { max-width: 760px; margin: var(--space-xl) auto 0; text-align: center; font-size: var(--text-accent); line-height: var(--leading-normal); color: var(--slate); }
   .q-close b { color: var(--gold-deep); font-weight: 600; }
   /* Compliance: these are composite questions, not client testimonials. */
   .q-note { max-width: 760px; margin: var(--space-md) auto 0; text-align: center; font-size: var(--text-small); color: var(--slate-muted); line-height: var(--leading-normal); }
 
+  /* ============================================================= PROPOSED ADDITIONS
+     Everything from here to the end of this block is new for the Client Experience
+     page. Nothing else on the site uses it; merging it changes no existing rule. */
+
+  /* ============================================================= SERVICE CALENDAR
+     Client Experience > "What happens, and when" — the only net-new component on the
+     site. Deliberately NOT an accordion: these 34 rows are the page's proof, so they
+     render open and nothing of value sits behind a click. Group chrome mirrors
+     .cap-card so the discipline tiles and the calendar read as one family, and the
+     season pills are modelled on .credmarks span. */
+  .cal-stack { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .cal-group {
+    background: var(--surface); border: 1px solid var(--line);
+    border-top: 3px solid var(--navy); border-radius: 3px; padding: var(--space-lg);
+  }
+  .cal-group-head {
+    display: flex; align-items: center; gap: var(--space-md);
+    padding-bottom: var(--space-md); margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--line);
+  }
+  /* .q-label carries a separator rule and spacing for the question cards on About;
+     here it is a plain subtitle in a flex head that owns its own spacing. */
+  .cal-group-head .q-label {
+    margin: 0.15rem 0 0; padding-top: 0; border-top: none;
+  }
+  .cal-name { font-family: var(--sans-display); font-size: var(--text-h3); color: var(--navy); }
+
+  .cal-list { list-style: none; margin: 0; }
+  .cal-item {
+    display: grid; grid-template-columns: 1fr auto auto;
+    align-items: center; gap: 0.4rem var(--space-md);
+    padding: 0.7rem 0; border-top: 1px solid var(--line);
+  }
+  .cal-item:first-child { border-top: none; padding-top: 0; }
+  .cal-item-name { font-size: var(--text-body); color: var(--ink-text); }
+  .cal-freq {
+    font-size: var(--text-small); color: var(--slate-muted);
+    letter-spacing: 0.03em; white-space: nowrap;
+  }
+
+  /* Three pills per row, always in EY/MY/YE order; .is-on marks the ones that apply.
+     The off state stays visible rather than blank so every row reads as the same
+     three-season scale. Screen readers get the .sr-only line instead — .cal-tags
+     itself is aria-hidden, since "EY MY YE" announced 34 times says nothing. */
+  .cal-tags { display: flex; gap: 0.35rem; }
+  .cal-tag {
+    font-size: var(--text-small); font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.22rem 0.5rem; border-radius: 2px;
+    border: 1px solid var(--line-cool); color: var(--slate-muted);
+  }
+  .cal-tag.is-on {
+    border-color: var(--gold); background: rgba(245,166,35,0.14); color: var(--gold-deep);
+  }
+
+  .cal-legend {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md);
+    margin-top: var(--space-lg); font-size: var(--text-small); color: var(--slate-muted);
+  }
+  .cal-legend b { color: var(--navy); font-weight: 700; letter-spacing: 0.04em; }
+
+  /* No visually-hidden helper existed before this page; the flip cards use a hidden
+     checkbox, which is a control, not a reusable text utility. */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
+  /* ============================================================= RESOURCE LINK LISTS
+     Calculators. Deliberately plain: a category heading over a list of links, no card
+     chrome, no icons, no counts. These are utilities a client came looking for, not
+     something to be sold — the restraint IS the treatment. Borrows the gold top rule
+     from .pillar so the columns read as part of the same family.
+
+     TWM: 3-column text — Multi-Item Content 7. Six categories fill 3 + 3 exactly. */
+  .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl) var(--space-lg); }
+  .res-group { border-top: 2px solid var(--gold); padding-top: var(--space-md); }
+  .res-group h3 { font-size: var(--text-h4); margin-bottom: var(--space-md); }
+  .res-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .res-list a {
+    font-size: var(--text-body); color: var(--slate); line-height: var(--leading-snug);
+    border-bottom: 1px solid transparent; transition: color .16s ease, border-color .16s ease;
+  }
+  .res-list a:hover { color: var(--navy); border-bottom-color: var(--gold); }
+
+  /* ========================================================= END PROPOSED ADDITIONS */
+
   /* ============================================================= THE FOUR PILLARS
      Firm-voice answer to the client-voice questions above. Deliberately NOT card
      chrome — a gold rule over each column keeps it editorial and distinct from
      both the question cards and the Who We Serve grid. */
-  /* TWM: 3-up. Multi-Item text sections are 3-column, so the four pillars wrap 3 + 1. */
-  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg) var(--space-md); }
-  .pillar { border-top: 2px solid var(--gold); padding-top: var(--space-md); }
-  .p-num { position: relative; width: 52px; height: 52px; display: grid; place-items: center; margin-bottom: var(--space-sm); }
-  .p-num .dial { position: absolute; inset: 0; width: 52px; height: 52px; color: var(--gold); }
-  .p-numtext {
-    position: relative; z-index: 1; font-family: var(--font-num); font-size: var(--text-body);
-    font-weight: 600; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums;
+  /* Single column, constrained to a readable measure. WAS 3-up, which wrapped 3 + 1 and
+     left a gap, and each pillar carried a numbered dial badge — but four commitments are
+     not a sequence, and numbering them implied a rank they do not have. Stacked full-width
+     rows let each principle be read as a statement rather than scanned as a tile.
+
+     TWM: 1-column text. Same always-expanded Multi-Item Content 1 question as the service
+     calendar on Client Experience — see README, Known gaps. */
+  .pillar-grid {
+    display: grid; grid-template-columns: 1fr; gap: var(--space-lg);
+    max-width: 820px; margin-inline: auto;
   }
+  .pillar { border-top: 2px solid var(--gold); padding-top: var(--space-md); }
   .pillar h3 { margin-bottom: 0.4rem; }
   .p-imperative {
     font-family: var(--sans-display); font-size: var(--text-accent); font-style: italic;
@@ -845,7 +966,6 @@
   @media (prefers-reduced-motion: reduce) {
     /* The flip still works — it just swaps faces instantly instead of rotating. */
     .flip-inner { transition: none; }
-    .q-card[open] .q-reveal { animation: none; }
     .q-card, .q-card:hover { transition: none; transform: none; }
     html { scroll-behavior: auto; }
   }
@@ -855,16 +975,18 @@
     .story-grid, .contact-grid { grid-template-columns: 1fr; }
     .story-media { order: -1; }
     .story-media img { height: 440px; }
+    /* Two up, and the centring offsets come off with the six-track grid that needed
+       them — otherwise stages 04 and 05 would be pushed off the second row. */
     .steps { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+    .steps .step,
+    .steps .step:nth-child(4),
+    .steps .step:nth-child(5) { grid-column: auto; }
     .step::after { display: none; }
     .cap-grid { grid-template-columns: 1fr 1fr; }
     .team-grid { grid-template-columns: 1fr 1fr; }
+    .res-grid { grid-template-columns: 1fr 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-    /* The questions stack is already single-column at every width, so it needs no
-       column override here — only the reserved question height, which stops earning
-       its keep once the cards are full-width. */
-    .q-text { min-height: 0; }
-    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    /* Pillars are already a single column at every width. */
     .wm-grid { grid-template-columns: 1fr; }
     /* Narrow viewports have no room for a side-lit scrim — go vertical so the copy
        always sits on the dark end of the gradient. */
@@ -898,9 +1020,17 @@
     .story-media .dial-badge { right: 14px; bottom: 14px; }
   }
   @media (max-width: 620px) {
-    .serve-grid, .cap-grid, .community-grid, .team-grid, .form-grid, .steps, .pillar-grid { grid-template-columns: 1fr; }
+    .serve-grid, .cap-grid, .community-grid, .team-grid, .form-grid, .steps, .pillar-grid, .res-grid { grid-template-columns: 1fr; }
     .serve-grid.is-compact { grid-template-columns: 1fr; }
+    /* Question cards stack; the fifth no longer needs its full-row span. */
+    .q-grid { grid-template-columns: 1fr; }
+    .q-card:last-child { grid-column: auto; }
     .steps.is-compact { grid-template-columns: 1fr 1fr; }
+    /* Calendar rows: activity name takes its own line, then frequency and the season
+       pills share the one below rather than stacking into three separate rows. */
+    .cal-item { grid-template-columns: 1fr auto; }
+    .cal-item-name { grid-column: 1 / -1; }
+    .cal-group { padding: var(--space-md); }
     /* Single column — nothing left to align against, so stop reserving the second line. */
     .p-imperative { min-height: 0; }
     /* Trust line: stacked and centered. Lives in the proof band now, not the hero. */

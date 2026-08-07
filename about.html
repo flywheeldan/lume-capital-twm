@@ -43,6 +43,16 @@
     <ul class="nav-links">
       <li><a href="about.html" aria-current="page">About</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li class="nav-has-sub">
+        <a href="calculators.html">Resources
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
       <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -59,6 +69,14 @@
     <ul>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li>
+        <span class="drawer-label">Resources</span>
+        <ul class="drawer-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
       <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -106,7 +124,7 @@
         </div>
         <div class="story-copy">
           <h2>Why I do what I&nbsp;do.</h2>
-          <p style="margin-top:var(--space-md);">When people ask why I became a financial advisor, I don&rsquo;t think about markets or investments. I think about my parents in the bleachers at my soccer games.</p>
+          <p style="margin-top:var(--space-md);">When people ask why I became a financial advisor, I don&rsquo;t think about markets or investments. I think about my parents.</p>
           <p style="margin-top:var(--space-sm);">My dad was the first in his family to go to college &mdash; he finished dental school at 25 and built his own practice from scratch. My mom had the harder job, raising my siblings and me. They didn&rsquo;t talk much about money. Instead, they showed me what it was <em>for</em>: being at the games, taking the trips, making being together the priority.</p>
           <p style="margin-top:var(--space-sm);">I started college pre-med, switched to finance, and set my sights on investment banking &mdash; then graduated in 2009, straight into the financial crisis, and that path disappeared overnight. My mom, who worked for a financial advisor, encouraged me to look at planning. The more I learned, the more I realized I&rsquo;d found exactly what I wanted: a way to solve complex problems while helping people build the lives they truly want.</p>
           <p style="margin-top:var(--space-sm);">Seventeen years and hundreds of families later, I&rsquo;ve learned that people rarely come to me with a money problem. They come with a life question that money touches.</p>
@@ -130,9 +148,14 @@
   </section>
 
   <!-- ===================================================== SUCCESS CHANGES THE QUESTIONS
-       TWM Multi-Item Content 1 — 1-column accordion, nine maximum. Restructured from the
-       original 6-column span grid to the single-column stack the section actually
-       renders. Still native <details>/<summary>: keyboard-accessible, works without JS. -->
+       TWM Multi-Item Content 4 — 2-column text. Question and answer are both visible.
+
+       WAS a numbered single-column accordion. Nothing on the card signalled it could be
+       clicked, so the answers read as absent rather than hidden, and the 01–05 badges
+       implied a sequence these five don't have — they are five kinds of question, not
+       five steps. Type size now carries the hierarchy instead of a control: the question
+       is large and italic, the answer is body text under its theme label. Five cards
+       wrap 2 + 2 + 1, and the fifth spans the full row rather than sitting beside a gap. -->
   <section id="questions" style="background:var(--paper-2);">
     <div class="container">
       <div class="section-head center">
@@ -141,65 +164,35 @@
       </div>
       <div class="q-grid">
 
-        <details class="q-card">
-          <summary>
-            <span class="q-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="q-numtext">01</span></span>
-            <span class="q-text">&ldquo;I spent decades chasing success. Now I have it, and I&rsquo;m trying to figure out what it actually means.&rdquo;</span>
-            <span class="q-toggle" aria-hidden="true"></span>
-          </summary>
-          <div class="q-reveal">
-            <span class="q-label">Purpose</span>
-            <p>Success creates freedom. It doesn&rsquo;t automatically create clarity. We help align your financial resources with the life you want to live, the relationships you want to deepen, and the impact you want to have.</p>
-          </div>
-        </details>
+        <article class="q-card">
+          <p class="q-text">&ldquo;I spent decades chasing success. Now I have it, and I&rsquo;m trying to figure out what it actually means.&rdquo;</p>
+          <span class="q-label">Purpose</span>
+          <p class="q-answer">Success creates freedom. It doesn&rsquo;t automatically create clarity. We help align your financial resources with the life you want to live, the relationships you want to deepen, and the impact you want to have.</p>
+        </article>
 
-        <details class="q-card">
-          <summary>
-            <span class="q-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="q-numtext">02</span></span>
-            <span class="q-text">&ldquo;Am I making the most of everything I&rsquo;ve worked so hard to build?&rdquo;</span>
-            <span class="q-toggle" aria-hidden="true"></span>
-          </summary>
-          <div class="q-reveal">
-            <span class="q-label">Stewardship</span>
-            <p>Wealth is more than a balance sheet. It&rsquo;s the product of years of effort, sacrifice, risk, and good decisions. Stewardship means making intentional choices with every resource you&rsquo;ve been entrusted to manage.</p>
-          </div>
-        </details>
+        <article class="q-card">
+          <p class="q-text">&ldquo;Am I making the most of everything I&rsquo;ve worked so hard to build?&rdquo;</p>
+          <span class="q-label">Stewardship</span>
+          <p class="q-answer">Wealth is more than a balance sheet. It&rsquo;s the product of years of effort, sacrifice, risk, and good decisions. Stewardship means making intentional choices with every resource you&rsquo;ve been entrusted to manage.</p>
+        </article>
 
-        <details class="q-card">
-          <summary>
-            <span class="q-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="q-numtext">03</span></span>
-            <span class="q-text">&ldquo;Will my success become an opportunity &mdash; or a burden &mdash; for the people I love?&rdquo;</span>
-            <span class="q-toggle" aria-hidden="true"></span>
-          </summary>
-          <div class="q-reveal">
-            <span class="q-label">Family</span>
-            <p>A transfer of wealth is easy. Preparing a family for wealth is harder. We help families build the conversations, values, and structures that let wealth serve future generations rather than define them.</p>
-          </div>
-        </details>
+        <article class="q-card">
+          <p class="q-text">&ldquo;Will my success become an opportunity &mdash; or a burden &mdash; for the people I love?&rdquo;</p>
+          <span class="q-label">Family</span>
+          <p class="q-answer">A transfer of wealth is easy. Preparing a family for wealth is harder. We help families build the conversations, values, and structures that let wealth serve future generations rather than define them.</p>
+        </article>
 
-        <details class="q-card">
-          <summary>
-            <span class="q-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="q-numtext">04</span></span>
-            <span class="q-text">&ldquo;What would change if I had complete confidence that every important financial decision was being handled well?&rdquo;</span>
-            <span class="q-toggle" aria-hidden="true"></span>
-          </summary>
-          <div class="q-reveal">
-            <span class="q-label">Time</span>
-            <p>The greatest luxury isn&rsquo;t more wealth. It&rsquo;s the freedom to spend your attention on family, relationships, health, and the pursuits that give life meaning.</p>
-          </div>
-        </details>
+        <article class="q-card">
+          <p class="q-text">&ldquo;What would change if I had complete confidence that every important financial decision was being handled well?&rdquo;</p>
+          <span class="q-label">Time</span>
+          <p class="q-answer">The greatest luxury isn&rsquo;t more wealth. It&rsquo;s the freedom to spend your attention on family, relationships, health, and the pursuits that give life meaning.</p>
+        </article>
 
-        <details class="q-card">
-          <summary>
-            <span class="q-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="q-numtext">05</span></span>
-            <span class="q-text">&ldquo;What will my success ultimately make possible?&rdquo;</span>
-            <span class="q-toggle" aria-hidden="true"></span>
-          </summary>
-          <div class="q-reveal">
-            <span class="q-label">Legacy</span>
-            <p>Legacy isn&rsquo;t measured by what you leave behind. It&rsquo;s measured by what continues because you were here. Whether through family, business, philanthropy, or community, we help clients use their resources to create lasting impact.</p>
-          </div>
-        </details>
+        <article class="q-card">
+          <p class="q-text">&ldquo;What will my success ultimately make possible?&rdquo;</p>
+          <span class="q-label">Legacy</span>
+          <p class="q-answer">Legacy isn&rsquo;t measured by what you leave behind. It&rsquo;s measured by what continues because you were here. Whether through family, business, philanthropy, or community, we help clients use their resources to create lasting impact.</p>
+        </article>
 
       </div>
       <p class="q-close">Those aren&rsquo;t investment questions. They&rsquo;re life questions &mdash; <b>and they&rsquo;re the ones we help you answer.</b></p>
@@ -208,13 +201,16 @@
   </section>
 
   <!-- ===================================================== THE PRINCIPLES
-       TWM Multi-Item Content 7 — 3-column text, left justified. Four principles wrap
-       3 + 1; TWM has no 4-column text section.
+       TWM 1-column text, stacked full-width rows at a readable measure.
 
-       The heading deliberately does NOT count them. "Five questions. Four principles."
-       made the arithmetic the point when the commitments themselves are; the repeated
-       words below (Stewardship, Legacy) still echo the questions above — they ask, we
-       answer — which is the connection that was actually doing the work. -->
+       WAS 3-up, which wrapped 3 + 1 and left a gap, with a numbered dial badge on each
+       principle. Four commitments are not a sequence and numbering them implied a rank
+       they do not have. Stacked, each one reads as a statement rather than a tile.
+
+       The heading deliberately does NOT count them either. "Five questions. Four
+       principles." made the arithmetic the point when the commitments themselves are;
+       the repeated words below (Stewardship, Legacy) still echo the questions above —
+       they ask, we answer — which is the connection that was actually doing the work. -->
   <section id="pillars">
     <div class="container">
       <div class="section-head center">
@@ -223,25 +219,21 @@
       </div>
       <div class="pillar-grid">
         <article class="pillar">
-          <span class="p-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="p-numtext">01</span></span>
           <h3>Intentionality</h3>
           <p class="p-imperative">Live by design, not by default.</p>
           <p>Success creates options. The challenge is deciding which ones are worth pursuing. Money should support a life that reflects your values, priorities, and aspirations &mdash; not simply accumulate for its own sake.</p>
         </article>
         <article class="pillar">
-          <span class="p-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="p-numtext">02</span></span>
           <h3>Stewardship</h3>
           <p class="p-imperative">Honor what you&rsquo;ve built.</p>
           <p>Wealth represents years of hard work, sacrifice, risk, and good judgment. Stewardship means making wise decisions with both the opportunities and the responsibilities that success creates.</p>
         </article>
         <article class="pillar">
-          <span class="p-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="p-numtext">03</span></span>
           <h3>Presence</h3>
           <p class="p-imperative">Be where you matter most.</p>
           <p>The ultimate purpose of wealth isn&rsquo;t consumption. It&rsquo;s freedom &mdash; the freedom to spend time with family, invest in relationships, pursue meaningful work, and be present for life&rsquo;s most important moments.</p>
         </article>
         <article class="pillar">
-          <span class="p-num"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="p-numtext">04</span></span>
           <h3>Legacy</h3>
           <p class="p-imperative">Leave things better than you found them.</p>
           <p>Legacy extends beyond assets. It shows up in stronger families, thriving communities, empowered employees, charitable impact, and values that endure across generations.</p>
@@ -309,8 +301,11 @@
 
       <p class="fw-cadence">From there, we grow with you &mdash; <b>illuminating the next decision, and the one after that</b>, as your life keeps changing.</p>
 
+      <!-- Points at Client Experience rather than Services: operational proof is the
+           natural beat straight after the process explanation. Services is still reached
+           from this page by the onward path at its foot, so no route is lost. -->
       <div class="band-more on-ink">
-        <a href="services.html#coordinate" class="textlink">See the disciplines we coordinate across
+        <a href="client-experience.html" class="textlink">See exactly what that looks like, year by year
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -360,7 +355,7 @@
           <span class="brand-divider" aria-hidden="true"></span>
           <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
         </div>
-        <p>A private wealth management practice serving Central Ohio since 2009.</p>
+        <p>A private wealth management practice since 2009.</p>
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
@@ -378,8 +373,10 @@
           <li><a href="about.html#questions">The Questions</a></li>
           <li><a href="about.html#framework">The Lume Framework</a></li>
           <li><a href="services.html#serve">Who We Serve</a></li>
-          <li><a href="services.html#capabilities">Capabilities</a></li>
+          <li><a href="client-experience.html">Client Experience</a></li>
           <li><a href="team.html">The Team</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
         </ul>
       </div>
       <div class="footer-col">

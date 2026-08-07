@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Experience | Lume Capital</title>
+<meta name="description" content="The Private Wealth Service Calendar — the exact cadence of planning work behind every Lume Capital relationship, season by season, discipline by discipline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lume.css">
+</head>
+<body>
+
+<!-- ===================================================== LUME DIAL (reusable symbol) -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true" focusable="false">
+  <symbol id="lumeDial" viewBox="0 0 100 100">
+    <polygon points="43.5,6.5 56.5,6.5 50,17.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2.6" fill="none">
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(30 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(60 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(90 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(120 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(150 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(180 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(210 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(240 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(270 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(300 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(330 50 50)"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV: identical to the other five pages, with one addition — "Client Experience"
+     inserted between Services and Team. This ships as a full 5th primary nav item, not
+     a link-only sub-page. The nav's own CSS already reserves room: see the "Six nav
+     items..." breakpoint comment in lume.css — five is still inside that budget, so no
+     responsive rework is needed, just the new <li>. -->
+<header class="site-nav">
+  <nav aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="Northwestern Mutual, Lume Capital">
+      <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html" aria-current="page">Client Experience</a></li>
+      <li class="nav-has-sub">
+        <a href="calculators.html">Resources
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer" id="hamburgerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li>
+        <span class="drawer-label">Resources</span>
+        <ul class="drawer-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-contact">
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================================================== PAGE HEADER (Banner Text 1)
+       Same solid-header pattern as Services / Team / Contact — no photo plate exists or
+       is needed here, and it leaves this page's one Hero Banner allowance unspent, same
+       as its siblings. -->
+  <section class="page-header">
+    <svg class="ph-dial" aria-hidden="true"><use href="#lumeDial"/></svg>
+    <div class="page-header-inner">
+      <h1>You always know what&rsquo;s coming next.</h1>
+      <p class="lead">Every plan needs a rhythm, not just a strategy. This is the actual cadence of work behind your relationship with Lume Capital &mdash; season by season, discipline by discipline &mdash; so nothing is left for a once-a-year surprise.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== THE RHYTHM
+       TWM Multi-Item Content 4 — 2-column text. Reuses .serve-grid/.serve-card exactly as
+       built for Services > Who We Serve (already a 2-up grid with bulleted lists); only the
+       content changes. .serve-num carries a season label here rather than a numeral — the
+       rule is a small gold letterspaced label, so the string reads correctly. -->
+  <section id="rhythm" style="background:var(--paper-2);">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Two scheduled meetings. Continuous advice in&nbsp;between.</h2>
+        <p class="lead">Our work together follows a deliberate rhythm &mdash; not a reactive one. One meeting in spring, one in fall, each with its own focus.</p>
+      </div>
+      <div class="serve-grid">
+        <article class="serve-card">
+          <div class="serve-num">SPRING &middot; JAN&ndash;APR</div>
+          <h3>Spring Planning</h3>
+          <p>Strategy &amp; portfolio. The meeting where we step back and look at the whole picture.</p>
+          <ul>
+            <li>Life updates</li>
+            <li>Plan update</li>
+            <li>Retirement planning</li>
+            <li>Tax planning</li>
+            <li>Liability management</li>
+            <li>Education funding</li>
+            <li>Portfolio review</li>
+          </ul>
+        </article>
+        <article class="serve-card">
+          <div class="serve-num">FALL &middot; SEP&ndash;DEC</div>
+          <h3>Fall Review</h3>
+          <p>Tax &amp; benefits. The meeting where we close out the year with intention.</p>
+          <ul>
+            <li>Charitable giving</li>
+            <li>Tax withholding</li>
+            <li>IRA / Roth strategy</li>
+            <li>Savings strategy</li>
+            <li>Deferred compensation</li>
+            <li>Benefits &amp; health care</li>
+          </ul>
+        </article>
+      </div>
+      <p class="q-close">Between meetings, reach us any time &mdash; <b>questions large or small, planned or unexpected.</b></p>
+      <div class="band-more">
+        <a href="services.html#coordinate" class="textlink">See what we coordinate across both meetings
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== THE YEAR, FRAMED
+       TWM Sequential Content 2 — same 3-tile timeline shell as About > The Lume
+       Framework, relabeled Early Year / Mid-Year / Year-End instead of process stages.
+       .step-num holds a two-letter token rather than a numeral; at 3-up in a 108px ring
+       there is room, but it is the one place on this page worth a visual check. -->
+  <section id="cadence" class="ink-section blueprint">
+    <svg class="dial" style="position:absolute;top:-150px;left:-130px;width:520px;height:520px;color:rgba(245,166,35,0.13);" aria-hidden="true"><use href="#lumeDial"/></svg>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="section-head center">
+        <h2>The year behind the two&nbsp;meetings.</h2>
+        <p class="lead">Early Year sets up Spring Planning. Year-End sets up Fall Review. Mid-Year bridges the two, as your life requires.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-ring"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="step-num">EY</span></div>
+          <h3>Early Year &middot; Jan&ndash;Apr</h3>
+          <p>Asset allocation, retirement income, tax-return season, and Roth conversion decisions &mdash; the work that frames Spring Planning.</p>
+        </div>
+        <div class="step">
+          <div class="step-ring"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="step-num">MY</span></div>
+          <h3>Mid-Year &middot; May&ndash;Aug</h3>
+          <p>Insurance, Medicare enrollment, and estate-document reviews &mdash; the bridge season, run as your life requires rather than the calendar.</p>
+        </div>
+        <div class="step">
+          <div class="step-ring"><svg class="dial" aria-hidden="true"><use href="#lumeDial"/></svg><span class="step-num">YE</span></div>
+          <h3>Year-End &middot; Sep&ndash;Dec</h3>
+          <p>Charitable giving, RMDs, gifting, and next year&rsquo;s income projections &mdash; the work that frames Fall Review.</p>
+        </div>
+      </div>
+      <p class="fw-cadence">Nothing here waits for the next scheduled meeting to get noticed &mdash; <b>it&rsquo;s simply when we make sure it happens.</b></p>
+      <div class="band-more on-ink">
+        <a href="about.html#framework" class="textlink">See where this fits in our five-stage process
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== A COMPLETE FINANCIAL PICTURE
+       TWM Highlights 2 — 3-column, icon above text. Same .cap-grid/.cap-card shell as the
+       former Services > Capabilities section, whose job this now does. Seven disciplines
+       wrap 3 + 3 + 1, the same reflow rule already in lume.css. Icons are placeholders
+       for NM brand-library equivalents, like every other inline icon on the site. -->
+  <section id="picture">
+    <div class="container">
+      <div class="section-head center">
+        <h2>A complete financial&nbsp;picture.</h2>
+        <p class="lead">Every planning activity on this page falls under one of these disciplines &mdash; and they are worked together, on one plan, rather than managed in isolation from each other.</p>
+      </div>
+      <div class="cap-grid">
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7"/></svg></div>
+          <h3>Investments</h3>
+          <p>Investments &amp; retirement income &mdash; reviewed every year against your actual plan, not a benchmark.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/></svg></div>
+          <h3>Asset Protection</h3>
+          <p>Insurance &amp; risk management &mdash; health, home, life, disability and long-term care, kept current as your life changes.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <h3>Tax Planning</h3>
+          <p>Tax planning &amp; education &mdash; the most active discipline on the calendar, with touchpoints in nearly every season.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+          <h3>Estate Planning</h3>
+          <p>Wills, trusts &amp; titling &mdash; reviewed on a set schedule so nothing goes stale for years at a time.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20.5C7.6 16.5 4 13.9 4 10.6A4.1 4.1 0 018.1 6.5c1.6 0 3 .8 3.9 2.1.9-1.3 2.3-2.1 3.9-2.1A4.1 4.1 0 0120 10.6c0 3.3-3.6 5.9-8 9.9z"/></svg></div>
+          <h3>Charitable</h3>
+          <p>Giving strategy &amp; donor-advised funds &mdash; structured so generosity is as deliberate as the rest of the plan.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.3"/><circle cx="12" cy="12" r="0.9" fill="currentColor"/></svg></div>
+          <h3>General</h3>
+          <p>Goal tracking &amp; wealth forecasting &mdash; revisited at every meeting, not just once a year.</p>
+        </article>
+        <article class="cap-card">
+          <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3 2.8-5 6-5s6 2 6 5"/><path d="M12.3 15.1c.8-2 2.8-3.4 4.7-3.4 3.2 0 5 2.3 5 5"/></svg></div>
+          <h3>VFO / Professional Network</h3>
+          <p>Coordinating your outside advisors &mdash; your CPA, attorney and specialists, kept working from the same plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== WHAT HAPPENS, AND WHEN
+       TWM Multi-Item Content 1 — 1-column, seven items, inside the nine-item cap.
+       DELIBERATELY NOT AN ACCORDION. These rows are the whole argument of the page, so
+       nothing here sits behind a click: every discipline renders open. Rows are a plain
+       list, not a table — TWM ships no table section type.
+
+       FLAG FOR TWM: Multi-Item Content 1 is documented as an accordion. Confirm it can
+       render items always-expanded. If it cannot, the fallback is Multi-Item Content 4
+       (2-column .serve-grid) with Tax Planning spanning both columns; the remaining six
+       then balance 5|4, 4|4, 2|3.
+
+       CONTENT QA: the source PDF labels Investments "6 planning activities" in its
+       section header but lists only 5 rows. Confirm the missing row with Lume before
+       any count is published — do not guess at a title. No per-discipline or sitewide
+       count is stated anywhere on this page for that reason. -->
+  <section id="calendar" style="background:var(--paper-2);">
+    <div class="container">
+      <div class="section-head center">
+        <h2>What happens, and&nbsp;when.</h2>
+        <p class="lead">The full calendar of planning activities behind the two meetings, organized by discipline. Each tag marks when it happens.</p>
+      </div>
+
+      <div class="cal-legend" style="margin-top:var(--space-lg);margin-bottom:var(--space-xl);">
+        <span><b>EY</b> &mdash; Early Year (Jan&ndash;Apr)</span>
+        <span><b>MY</b> &mdash; Mid-Year (May&ndash;Aug)</span>
+        <span><b>YE</b> &mdash; Year-End (Sep&ndash;Dec)</span>
+      </div>
+
+      <div class="cal-stack">
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">Investments</h3>
+              <span class="q-label">Investments &amp; Retirement Income</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Asset Allocation &amp; Location Review</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Investment Performance vs. Plan</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Retirement Income Distributions Review</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Retirement Plan Contribution Amounts</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Cash Flow Planning</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">Asset Protection</h3>
+              <span class="q-label">Insurance &amp; Risk Management</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Health Insurance / Medicare Plan Enrollment</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Insurance Review (Home / Auto / Umbrella)</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Insurance Review (Life / Disability / LTC)</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Asset Protection Plan Strategy Review</span><span class="cal-freq">Every 3 yrs</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">Tax Planning</h3>
+              <span class="q-label">Tax Planning &amp; Education</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Roth Conversions</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">IRMAA Bracket &amp; Surcharge Planning</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year and Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Tax-Loss Harvesting</span><span class="cal-freq">Year-round</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Retirement Contributions (Apr. 15 Deadline)</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Statements &amp; 1099s to CPA</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Prior-Year Tax Return Review</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Retirement Contributions (Oct. Ext. Deadline)</span><span class="cal-freq">Every 2 yrs</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Income Projections to CPA</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Fund 529 Plans</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Year-End Gifting</span><span class="cal-freq">As needed</span><span class="sr-only">Occurs: Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Required Minimum Distributions (RMDs)</span><span class="cal-freq">As needed</span><span class="sr-only">Occurs: Early Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Qualified Charitable Distributions</span><span class="cal-freq">As needed</span><span class="sr-only">Occurs: Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">Estate Planning</h3>
+              <span class="q-label">Wills, Trusts &amp; Titling</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Account Titling Review</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Beneficiary Designations Review</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Estate Plan Strategy Review</span><span class="cal-freq">Every 3 yrs</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Will &amp; Trust Review</span><span class="cal-freq">Every 3 yrs</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">Charitable</h3>
+              <span class="q-label">Giving Strategy &amp; Donor-Advised Funds</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Charitable Donations &amp; Donor-Advised Funds</span><span class="cal-freq">Annually</span><span class="sr-only">Occurs: Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Charitable Plan Strategy Review</span><span class="cal-freq">Every 3 yrs</span><span class="sr-only">Occurs: Mid-Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">General</h3>
+              <span class="q-label">Goal Tracking &amp; Wealth Forecasting</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Goal Tracking &amp; Wealth Forecasting</span><span class="cal-freq">Every meeting</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Major Updates to Client Profile</span><span class="cal-freq">Every meeting</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Client Re-Discovery</span><span class="cal-freq">Every 3 yrs</span><span class="sr-only">Occurs: Early Year</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag">MY</span><span class="cal-tag">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Cash Level Review</span><span class="cal-freq">Every meeting</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+          </ul>
+        </article>
+
+        <article class="cal-group">
+          <div class="cal-group-head">
+            <div>
+              <h3 class="cal-name">VFO / Professional Network</h3>
+              <span class="q-label">Coordinating Your Outside Advisors</span>
+            </div>
+          </div>
+          <ul class="cal-list">
+            <li class="cal-item"><span class="cal-item-name">Update on Professional Network Projects</span><span class="cal-freq">Every meeting</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Address Professional Network Priorities</span><span class="cal-freq">Every meeting</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+            <li class="cal-item"><span class="cal-item-name">Solicit Professional Network Input</span><span class="cal-freq">As needed</span><span class="sr-only">Occurs: Early Year, Mid-Year and Year-End</span><span class="cal-tags" aria-hidden="true"><span class="cal-tag is-on">EY</span><span class="cal-tag is-on">MY</span><span class="cal-tag is-on">YE</span></span></li>
+          </ul>
+        </article>
+
+      </div>
+
+      <!-- Compliance caveat, same .q-note pattern used for the composite client questions
+           on About. Wording pending NM marketing/compliance sign-off. -->
+      <p class="q-note">Activities and cadence are illustrative of a typical client relationship and may vary by individual circumstances.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== CLOSING CTA
+       TWM Singular Content 3 — heading, message, CTA, background colour only. Headline
+       is a direct callback to the PDF's own closing line. -->
+  <section class="ink-section">
+    <div class="container">
+      <div class="section-head center" style="margin-bottom:var(--space-lg);">
+        <h2>This is how we work &mdash; together, year after&nbsp;year.</h2>
+        <p class="lead">Whether you&rsquo;re comparing advisors or simply want to understand what ongoing planning actually looks like, we&rsquo;re glad to walk through it in person.</p>
+      </div>
+      <div class="blueprint-cta" style="margin-top:0;">
+        <a href="contact.html" class="btn btn-gold">Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== ONWARD PATH -->
+  <section class="next-step" style="padding:0;">
+    <div class="container">
+      <div>
+        <span class="ns-label">Next</span>
+        <div class="ns-title">The people who will know your story.</div>
+      </div>
+      <a href="team.html" class="textlink">Meet the team who does this work
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+        </div>
+        <p>A private wealth management practice since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+16142226065">614.222.6065</a></li>
+          <li>1349 W Lane Ave</li>
+          <li>Upper Arlington, Columbus OH 43221</li>
+          <li><a href="contact.html">Start a conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="about.html">Chris&rsquo;s Story</a></li>
+          <li><a href="about.html#questions">The Questions</a></li>
+          <li><a href="about.html#framework">The Lume Framework</a></li>
+          <li><a href="services.html#serve">Who We Serve</a></li>
+          <li><a href="client-experience.html">Client Experience</a></li>
+          <li><a href="team.html">The Team</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Compliance</h5>
+        <ul>
+          <li><a href="#">FINRA BrokerCheck</a></li>
+          <li><a href="#">Form CRS</a></li>
+          <li><a href="#">Privacy Notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>Members use <strong>Lume Capital</strong> as a marketing name for doing business as representatives of Northwestern Mutual. Lume Capital is not a registered investment adviser, broker-dealer, insurance agency, federal savings bank, or legal entity. Northwestern Mutual is the marketing name for The Northwestern Mutual Life Insurance Company (NM) (life and disability insurance, annuities, and life insurance with long-term care benefits) and its subsidiaries, including Northwestern Long Term Care Insurance Company (NLTC) (long-term care insurance), Northwestern Mutual Investment Services, LLC (NMIS) (investment brokerage services), a registered investment adviser, broker-dealer, and member of FINRA and SIPC, and Northwestern Mutual Wealth Management Company&reg; (NMWMC) (investment advisory and trust services), a federal savings bank. NM and its subsidiaries are in Milwaukee, WI. Christopher M. Moore is licensed in Ohio and California. To view detailed disclosures regarding individual representatives, view their information at <a href="https://lumecapital.nm.com">lumecapital.nm.com</a>.</p>
+      <p>Financial representatives do not render tax or legal advice. Consult with a tax or legal professional for advice specific to your situation.</p>
+      <p>Securities and mutual fund orders cannot be placed electronically through this site. Orders may only be placed by phone or in person with your advisor.</p>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Northwestern Mutual. All rights reserved.</span>
+      <span>Upper Arlington &middot; Columbus, Ohio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburgerBtn').addEventListener('click', function () {
+    var drawer = document.getElementById('mobileDrawer');
+    var isOpen = drawer.classList.toggle('open');
+    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletters | Lume Capital</title>
+<meta name="description" content="The Lume Capital newsletter — quarterly notes on planning, markets and the decisions our clients are actually weighing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lume.css">
+</head>
+<body>
+
+<!-- ===================================================== LUME DIAL (reusable symbol) -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true" focusable="false">
+  <symbol id="lumeDial" viewBox="0 0 100 100">
+    <polygon points="43.5,6.5 56.5,6.5 50,17.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2.6" fill="none">
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(30 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(60 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(90 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(120 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(150 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(180 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(210 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(240 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="17" transform="rotate(270 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(300 50 50)"/>
+      <line x1="50" y1="8" x2="50" y2="16" transform="rotate(330 50 50)"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="site-nav">
+  <nav aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="Northwestern Mutual, Lume Capital">
+      <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li class="nav-has-sub">
+        <a href="calculators.html">Resources
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html" aria-current="page">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer" id="hamburgerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client-experience.html">Client Experience</a></li>
+      <li>
+        <span class="drawer-label">Resources</span>
+        <ul class="drawer-sub">
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-contact">
+      <a href="tel:+16142226065" class="nav-phone">614.222.6065</a>
+      <a href="contact.html" class="btn btn-gold">Start a Conversation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================================================== PAGE HEADER (Banner Text 1) -->
+  <section class="page-header">
+    <svg class="ph-dial" aria-hidden="true"><use href="#lumeDial"/></svg>
+    <div class="page-header-inner">
+      <h1>What we&rsquo;re writing about.</h1>
+      <p class="lead">A quarterly note to clients on the decisions actually in front of them &mdash; what changed, what it means, and what we are doing about it. No market predictions.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== NEWSLETTER ARCHIVE
+       TWM Multi-Item Content 4 — 2-column text. Reuses .serve-grid/.serve-card, with
+       .serve-num carrying the issue date the way it carries the season label on Client
+       Experience. Each issue is a PDF that opens in the browser, not a page on this site,
+       so there is nothing here to build per issue beyond a row.
+
+       ============================ PLACEHOLDER CONTENT ============================
+       All six entries below are FAUX — written for visual reference only, because no
+       real issues were supplied. Titles, dates and summaries are invented and MUST be
+       replaced before this page goes anywhere near a client.
+
+       The hrefs point at newsletters/<slug>.pdf, which does not exist yet: the pattern
+       is the deliverable, not the file. Clicking one 404s, deliberately and visibly,
+       rather than resolving to "#" and looking like it works. Drop the real PDFs into a
+       /newsletters directory and the links resolve as written.
+       ============================================================================= -->
+  <section id="issues" style="background:var(--paper-2);">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Recent issues.</h2>
+        <p class="lead">Each issue opens as a PDF in a new tab.</p>
+      </div>
+
+      <div class="serve-grid">
+
+        <article class="serve-card">
+          <div class="serve-num">JULY 2026</div>
+          <h3>The year of the Roth question</h3>
+          <p>Conversion math changed for a lot of households this year, and the window is narrower than it looks. What we are modelling before year-end, and the two situations where converting is usually the wrong call.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2026-q3.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="serve-card">
+          <div class="serve-num">APRIL 2026</div>
+          <h3>What your CPA wishes you had asked in January</h3>
+          <p>Most of the tax bill was decided months before the return was filed. A walk through the handful of decisions that actually move the number, and when each one has to happen.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2026-q2.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="serve-card">
+          <div class="serve-num">JANUARY 2026</div>
+          <h3>Concentrated stock, and the cost of waiting</h3>
+          <p>Holding a large position in one company is a decision, even when it feels like inaction. How we think about diversifying without triggering an avoidable tax bill, and what a 10b5-1 plan does and doesn&rsquo;t solve.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2026-q1.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="serve-card">
+          <div class="serve-num">OCTOBER 2025</div>
+          <h3>Preparing heirs, not just assets</h3>
+          <p>A transfer of wealth is a legal exercise. Preparing a family for it is not. The conversations we help clients have before the documents matter, and why they tend to happen later than they should.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2025-q4.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="serve-card">
+          <div class="serve-num">JULY 2025</div>
+          <h3>The retirement paycheck problem</h3>
+          <p>Saving is one discipline; turning savings into dependable, tax-aware income is a different one. Which accounts we draw from first, why the order matters more than the return, and where most plans go wrong.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2025-q3.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="serve-card">
+          <div class="serve-num">APRIL 2025</div>
+          <h3>Insurance you should probably cancel</h3>
+          <p>Coverage bought for a life you no longer live is a real cost. A short audit of the policies worth keeping, the ones worth resizing, and the two most people are underinsured against.</p>
+          <p style="margin-top:var(--space-md);">
+            <a href="newsletters/lume-capital-2025-q2.pdf" target="_blank" rel="noopener" class="textlink">Read the issue &middot; PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </p>
+        </article>
+
+      </div>
+
+      <p class="q-note">Newsletter content is general education, not personalised investment, tax or legal advice, and does not account for your individual circumstances. Views are current as of each issue&rsquo;s publication date and are not updated afterward.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== CLOSING CTA
+       TWM Singular Content 3 — heading, message, CTA, background colour only. -->
+  <section class="ink-section">
+    <div class="container">
+      <div class="section-head center" style="margin-bottom:var(--space-lg);">
+        <h2>Rather ask than&nbsp;read?</h2>
+        <p class="lead">Everything in these issues started as a client question. If one of them is yours, we would rather answer it directly.</p>
+      </div>
+      <div class="blueprint-cta" style="margin-top:0;">
+        <a href="contact.html" class="btn btn-gold">Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== ONWARD PATH
+       Back into the main narrative arc — a visitor who wandered into the archive is in
+       research mode, and the calendar is the strongest thing to hand them next. -->
+  <section class="next-step" style="padding:0;">
+    <div class="container">
+      <div>
+        <span class="ns-label">Next</span>
+        <div class="ns-title">What working with us actually looks like.</div>
+      </div>
+      <a href="client-experience.html" class="textlink">See the year, season by season
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <img src="nwm-logo-horizontal-white.svg" alt="Northwestern Mutual" class="brand-nwm">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <img src="PNG/2_LumeCapital_FullColor_Reverse_Horizontal.png" alt="Lume Capital" class="brand-lume">
+        </div>
+        <p>A private wealth management practice since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+16142226065">614.222.6065</a></li>
+          <li>1349 W Lane Ave</li>
+          <li>Upper Arlington, Columbus OH 43221</li>
+          <li><a href="contact.html">Start a conversation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="about.html">Chris&rsquo;s Story</a></li>
+          <li><a href="about.html#questions">The Questions</a></li>
+          <li><a href="about.html#framework">The Lume Framework</a></li>
+          <li><a href="services.html#serve">Who We Serve</a></li>
+          <li><a href="client-experience.html">Client Experience</a></li>
+          <li><a href="team.html">The Team</a></li>
+          <li><a href="calculators.html">Calculators</a></li>
+          <li><a href="newsletters.html">Newsletters</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Compliance</h5>
+        <ul>
+          <li><a href="#">FINRA BrokerCheck</a></li>
+          <li><a href="#">Form CRS</a></li>
+          <li><a href="#">Privacy Notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>Members use <strong>Lume Capital</strong> as a marketing name for doing business as representatives of Northwestern Mutual. Lume Capital is not a registered investment adviser, broker-dealer, insurance agency, federal savings bank, or legal entity. Northwestern Mutual is the marketing name for The Northwestern Mutual Life Insurance Company (NM) (life and disability insurance, annuities, and life insurance with long-term care benefits) and its subsidiaries, including Northwestern Long Term Care Insurance Company (NLTC) (long-term care insurance), Northwestern Mutual Investment Services, LLC (NMIS) (investment brokerage services), a registered investment adviser, broker-dealer, and member of FINRA and SIPC, and Northwestern Mutual Wealth Management Company&reg; (NMWMC) (investment advisory and trust services), a federal savings bank. NM and its subsidiaries are in Milwaukee, WI. Christopher M. Moore is licensed in Ohio and California. To view detailed disclosures regarding individual representatives, view their information at <a href="https://lumecapital.nm.com">lumecapital.nm.com</a>.</p>
+      <p>Financial representatives do not render tax or legal advice. Consult with a tax or legal professional for advice specific to your situation.</p>
+      <p>Securities and mutual fund orders cannot be placed electronically through this site. Orders may only be placed by phone or in person with your advisor.</p>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Northwestern Mutual. All rights reserved.</span>
+      <span>Upper Arlington &middot; Columbus, Ohio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburgerBtn').addEventListener('click', function () {
+    var drawer = document.getElementById('mobileDrawer');
+    var isOpen = drawer.classList.toggle('open');
+    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>
